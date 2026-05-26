@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>布達佩斯旅遊計劃 11天</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f4f1;color:#1a1a18;font-size:15px;line-height:1.6}
+.hero{background:linear-gradient(160deg,#2d0a1e 0%,#8b2252 55%,#c67c2a 100%);color:#fff;padding:2rem 1.25rem 1.5rem;text-align:center}
+.hero h1{font-size:20px;font-weight:600;margin-bottom:6px}
+.hero p{font-size:13px;opacity:.85}
+.tabs{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e0ddd6;display:flex;overflow-x:auto;padding:0 1rem;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:12px 14px;font-size:13px;font-weight:500;color:#888;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.tab.active{color:#8b2252;border-bottom-color:#8b2252}
+.section{display:none;padding:1rem}
+.section.active{display:block}
+.day{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.day h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.day p{font-size:13px;color:#5f5e5a;line-height:1.7}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:#f1efe8;color:#5f5e5a;margin-right:4px;margin-bottom:6px}
+.tag.nature{background:#e8f5e9;color:#1b5e20}
+.tag.city{background:#f3e5f5;color:#4a148c}
+.tag.cave{background:#e8eaf6;color:#1a237e}
+.tag.wine{background:#fce4ec;color:#880e4f}
+.tag.thermal{background:#fff3e0;color:#e65100}
+.tag.travel{background:#fff8e1;color:#f57f17}
+.warn{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:12px;color:#7d6608}
+.hotel{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.hotel h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.hotel p{font-size:12px;color:#5f5e5a}
+.tip{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.tip h4{font-size:14px;font-weight:600;margin-bottom:8px}
+.tip li{font-size:13px;color:#5f5e5a;line-height:1.7;margin-left:18px;margin-bottom:3px}
+.sec-title{font-size:12px;font-weight:600;color:#aaa;letter-spacing:.5px;text-transform:uppercase;margin:16px 0 8px}
+.notice{margin:1rem 1rem 0;background:#fef9ec;border-radius:12px;padding:14px 16px;border-left:3px solid #d4ac0d;font-size:12px;color:#7d6608}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div style="font-size:26px;margin-bottom:6px">🇭🇺</div>
+  <h1>布達佩斯 11天旅遊計劃</h1>
+  <p>布達佩斯・多瑙河彎・北匈牙利山區・巴拉頓湖<br>2026年 9月20日 — 9月30日</p>
+</div>
+
+<div class="notice">
+  🍂 九月是匈牙利最美的季節：葡萄收成、楓紅山色、溫泉最舒適。
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" onclick="showTab(0)">行程總覽</div>
+  <div class="tab" onclick="showTab(1)">每日行程</div>
+  <div class="tab" onclick="showTab(2)">住宿</div>
+  <div class="tab" onclick="showTab(3)">交通</div>
+  <div class="tab" onclick="showTab(4)">實用資訊</div>
+</div>
+
+<!-- 行程總覽 -->
+<div class="section active" id="sec0">
+  <div class="day">
+    <h3>🗺 行程亮點</h3>
+    <p>
+      🏰 布達城堡區 + 漁人堡（UNESCO 世界遺產）<br>
+      🌊 多瑙河彎（Dunakanyar）— 絕美 S 形河彎 + 維塞格拉德要塞<br>
+      🦇 阿格泰萊克鐘乳石洞（UNESCO）— 中歐最大石灰岩洞穴群<br>
+      🍇 托卡伊葡萄酒產區（UNESCO）— 9 月收成季，貴腐酒品鑑<br>
+      ⛰ 馬特拉山 Kékes 峰（1,015m，匈牙利最高點）<br>
+      🌅 巴拉頓湖 — 中歐最大湖，蒂哈尼半島、巴達喬尼火山岩<br>
+      ♨️ 埃夫維茲天然溫泉湖 — 世界最大天然熱泉湖
+    </p>
+  </div>
+  <div class="day">
+    <h3>📍 路線概覽</h3>
+    <p>
+      ✈ <strong>9/20</strong> — 抵達布達佩斯<br>
+      🏙 <strong>9/21</strong> — 布達城堡區・漁人堡・Gellért 山<br>
+      🌊 <strong>9/22</strong> — 多瑙河彎一日遊（Visegrád、Esztergom、Szentendre）<br>
+      🚌 <strong>9/23</strong> — 布達佩斯 → 埃格爾 Eger（巴洛克城市+酒窖）<br>
+      🦇 <strong>9/24</strong> — 阿格泰萊克洞穴國家公園（UNESCO）<br>
+      🍇 <strong>9/25</strong> — 托卡伊葡萄酒鄉（UNESCO，收成季）<br>
+      ⛰ <strong>9/26</strong> — 馬特拉山 Kékes 峰健行（1,015m）<br>
+      🚂 <strong>9/27</strong> — 返回布達佩斯 → 蒂哈尼半島<br>
+      🌋 <strong>9/28</strong> — 巴達喬尼火山 + 葡萄園<br>
+      ♨️ <strong>9/29</strong> — 埃夫維茲天然溫泉湖 + Festetics 宮殿<br>
+      ✈ <strong>9/30</strong> — 返回布達佩斯，搭機回台
+    </p>
+  </div>
+</div>
+
+<!-- 每日行程 -->
+<div class="section" id="sec1">
+
+  <div class="sec-title">Day 1–3｜布達佩斯</div>
+  <div class="day">
+    <span class="tag travel">抵達</span>
+    <h3>✈ 9/20 抵達布達佩斯</h3>
+    <p>布達佩斯 Ferihegy 機場抵達，搭 100E 巴士直達市中心 Deák Ferenc tér（40 分鐘，€2）。Check in，晚上逛 <strong>Nagy Vásárcsarnok 中央市場</strong>，品嚐牛肉濃湯 Gulyás、煙燻肉腸、Kürtőskalács 煙囪蛋糕。</p>
+  </div>
+  <div class="day">
+    <span class="tag city">城市</span>
+    <h3>🏙 9/21 布達城堡區 + Gellért 山</h3>
+    <p>上午搭纜車上 <strong>布達城堡區（UNESCO）</strong>，參觀馬提亞斯教堂、<strong>漁人堡</strong>（拍攝多瑙河全景最佳地點）。下午步行至 <strong>Gellért 山（235m）</strong>登頂，俯瞰鏈橋與布達佩斯全城。黃昏到廢墟酒吧區（Szimpla Kert 最有名）體驗獨特的廢棄工廠改建酒吧文化。</p>
+  </div>
+  <div class="day">
+    <span class="tag nature">自然</span>
+    <h3>🌊 9/22 多瑙河彎（Dunakanyar）一日遊</h3>
+    <p>從 Budapest Nyugati 搭火車北上。先至 <strong>Visegrád 維塞格拉德</strong>（山頂要塞俯瞰多瑙河 S 形大彎），再到 <strong>Esztergom 埃斯泰爾根</strong>（匈牙利最大教堂，屹立多瑙河邊山丘，對岸即斯洛伐克）。返途停 <strong>Szentendre 聖安德烈</strong>（塞爾維亞藝術家小鎮，彩色教堂、陶藝工作室）。晚上回布達佩斯。</p>
+  </div>
+
+  <div class="sec-title">Day 4｜埃格爾</div>
+  <div class="day">
+    <span class="tag city">城市</span>
+    <h3>🏰 9/23 布達佩斯 → 埃格爾 Eger</h3>
+    <p>搭火車至 Eger（約 2 小時）。匈牙利保存最好的巴洛克城市，整座城幾乎完好如初。下午遊覽 <strong>埃格爾城堡</strong>（1552 年少數士兵抵禦土耳其大軍的歷史戰場）和歐洲最北的鄂圖曼尖塔。傍晚必去 <strong>美女谷（Szépasszonyvölgy）</strong>——山谷中百座私人酒窖，試飲 Egri Bikavér「公牛血」紅酒。</p>
+  </div>
+
+  <div class="sec-title">Day 5｜阿格泰萊克</div>
+  <div class="day">
+    <span class="tag cave">洞穴</span>
+    <h3>🦇 9/24 阿格泰萊克洞穴國家公園（UNESCO）</h3>
+    <p>從 Eger 搭巴士到阿格泰萊克（約 3 小時）。<strong>Baradla 洞穴</strong>是中歐最大鐘乳石洞系統（匈牙利側 7km 可探索），洞內巨型石筍高達 25m，音樂廳空間可容納管弦樂演出。導覽 1.5–3 小時，洞內全年恆溫 10°C 需帶外套。傍晚前往托卡伊。</p>
+    <div class="warn">
+      ⚠️ 必須跟導覽團入場，旺季建議提前在 aggtelekicaves.hu 預訂。帶防滑鞋與夾克。
+    </div>
+  </div>
+
+  <div class="sec-title">Day 6｜托卡伊</div>
+  <div class="day">
+    <span class="tag wine">葡萄酒</span>
+    <h3>🍇 9/25 托卡伊葡萄酒鄉（Tokaj，UNESCO）</h3>
+    <p>9 月正是葡萄收成季！<strong>托卡伊</strong>是世界第一個法律規範的葡萄酒產區（1737 年），以貴腐甜酒 Aszú 聞名。漫步丘陵葡萄園，走進百年石砌酒窖，品嚐 Tokaji Aszú 5 Puttonyos（拿破崙稱之為「王中之王」）。推薦參觀 <strong>Disznókő 或 Oremus 酒莊</strong>。Tisza 河畔夕陽倒影也非常美麗。</p>
+  </div>
+
+  <div class="sec-title">Day 7｜馬特拉山</div>
+  <div class="day">
+    <span class="tag nature">自然</span>
+    <h3>⛰ 9/26 馬特拉山 Kékes 峰（1,015m）</h3>
+    <p>從托卡伊西行至 <strong>馬特拉山（Mátra）</strong>，匈牙利最高山脈。搭纜車或步行至 <strong>Kékes 峰（1,015m）</strong>——匈牙利最高點，晴天可俯瞰整個喀爾巴阡盆地。9 月秋色已現，山毛櫸林金紅交織。下山後經 Gyöngyös 小鎮，傍晚返回布達佩斯。</p>
+  </div>
+
+  <div class="sec-title">Day 8–10｜巴拉頓湖</div>
+  <div class="day">
+    <span class="tag travel">移動</span>
+    <h3>🚂 9/27 布達佩斯 → 蒂哈尼半島（Tihany）</h3>
+    <p>早上返回布達佩斯換行李，搭火車到 Balatonfüred（約 1.5 小時）。下午渡輪至 <strong>蒂哈尼半島（Tihany）</strong>——巴拉頓湖最美半島，半島上有內湖與外湖並列奇景。<strong>本篤會修道院（1055 年）</strong>俯瞰湖面，薰衣草小徑在夕陽下金光閃閃。</p>
+  </div>
+  <div class="day">
+    <span class="tag nature">自然</span>
+    <h3>🌋 9/28 巴達喬尼火山（Badacsony）</h3>
+    <p>搭渡輪至 <strong>Badacsony</strong>——巴拉頓湖北岸的死火山殘丘（438m），玄武岩柱地貌壯觀，為整個湖區最獨特的自然景觀。健行上山約 1.5 小時，可俯瞰巴拉頓湖全景。山坡上出產匈牙利最佳白葡萄酒（Olaszrizling），山頂露台餐廳喝酒賞景是必做之事。</p>
+  </div>
+  <div class="day">
+    <span class="tag thermal">溫泉</span>
+    <h3>♨️ 9/29 埃夫維茲天然溫泉湖（Hévíz）+ Festetics 宮殿</h3>
+    <p><strong>Hévíz</strong> 是世界最大天然溫泉湖（水面 4.4 公頃，水深 38m），全年水溫 23–38°C，可直接在湖中漂浮泡湯，湖面長滿睡蓮。距西端 <strong>凱斯特海伊（Keszthely）</strong>僅 8km，下午參觀 <strong>Festetics 宮殿</strong>（匈牙利最大巴洛克宮殿之一，1745 年建）。晚上返回布達佩斯。</p>
+  </div>
+
+  <div class="sec-title">Day 11｜回程</div>
+  <div class="day">
+    <span class="tag travel">回程</span>
+    <h3>✈ 9/30 布達佩斯 → 台北</h3>
+    <p>早上可逛 <strong>Andrássy 大道（UNESCO）</strong>或英雄廣場（Hősök tere）。下午搭 100E 巴士至機場出發。布達佩斯機場免稅店有 Pálinka 水果白蘭地、Tokaji 葡萄酒、Herend 瓷器可採購。</p>
+  </div>
+
+</div>
+
+<!-- 住宿 -->
+<div class="section" id="sec2">
+  <div class="sec-title">布達佩斯（3晚）</div>
+  <div class="hotel">
+    <h4>Continental Hotel Budapest ★★★★★</h4>
+    <p>🏙 Rákóczi út 中心地帶 · 3晚（9/20–9/23）<br>新哥德式歷史建築改建，步行到大市場、廢墟酒吧區均方便，距東站 Keleti 10 分鐘。</p>
+  </div>
+
+  <div class="sec-title">埃格爾（1晚）</div>
+  <div class="hotel">
+    <h4>Hotel Senator-ház Eger</h4>
+    <p>🏰 Dobó 廣場旁 · 1晚（9/23–9/24）<br>巴洛克建築，城堡正對面，步行到美女谷酒窖約 10 分鐘。</p>
+  </div>
+
+  <div class="sec-title">托卡伊（2晚）</div>
+  <div class="hotel">
+    <h4>Hotel Botrytis Tokaj</h4>
+    <p>🍇 托卡伊小鎮中心 · 2晚（9/24–9/26）<br>精品設計旅館，自有酒窖，可安排葡萄園參觀及貴腐酒品鑑。</p>
+  </div>
+
+  <div class="sec-title">巴拉頓湖（2晚）</div>
+  <div class="hotel">
+    <h4>Anna Grand Hotel Balatonfüred ★★★★</h4>
+    <p>🌅 Balatonfüred 湖畔 · 2晚（9/27–9/29）<br>百年歷史度假酒店，直面巴拉頓湖，附設溫泉水療，可步行搭渡輪至蒂哈尼。</p>
+  </div>
+
+  <div class="sec-title">布達佩斯（1晚）</div>
+  <div class="hotel">
+    <h4>ibis Budapest Airport / 原酒店</h4>
+    <p>🏙 · 1晚（9/29–9/30）<br>若班機早晨出發，可訂機場旁 ibis（距航廈 5 分鐘），方便隔天離境。</p>
+  </div>
+</div>
+
+<!-- 交通 -->
+<div class="section" id="sec3">
+  <div class="tip">
+    <h4>✈ 台北 → 布達佩斯</h4>
+    <ul>
+      <li>常見路線：桃園 → 赫爾辛基/維也納/法蘭克福 轉機，約 14–17 小時</li>
+      <li>推薦：Finnair（赫爾辛基轉）、Lufthansa（法蘭克福轉）、LOT Polish</li>
+      <li>提早 3 個月訂，來回含稅約 NT$25,000–45,000</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚌 機場 ↔ 市中心</h4>
+    <ul>
+      <li>100E 巴士：Ferihegy → Deák tér，40 分鐘，€2（需買票後上車）</li>
+      <li>計程車：約 HUF 10,000–13,000，叫 Bolt App 避免被坑</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚇 布達佩斯市區</h4>
+    <ul>
+      <li>地鐵 M1/M2/M3/M4 + 電車 + 巴士，買 24h 票 HUF 2,500 / 72h HUF 5,500</li>
+      <li>M1（黃線）1896 年開通，是歐洲大陸第一條地鐵，本身也是 UNESCO 遺產</li>
+      <li>App：BKK Futár（即時查詢）</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚂 城際火車（MÁV）</h4>
+    <ul>
+      <li>→ Eger：Keleti 東站出發，約 2 小時，HUF 3,600 起</li>
+      <li>→ Balatonfüred：Déli 或 Keleti 站，約 1.5 小時，HUF 3,200 起</li>
+      <li>→ Keszthely（Hévíz 最近站）：約 3 小時，HUF 4,500 起</li>
+      <li>官網：mav-start.hu（可線上購票）</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚌 北匈牙利（洞穴、托卡伊、馬特拉）</h4>
+    <ul>
+      <li>Eger → Aggtelek：巴士約 3 小時，部分需轉車，建議查 menetrendek.hu</li>
+      <li>Aggtelek → Tokaj → Mátra：建議租車，靈活度高，全程約 3 小時</li>
+      <li>租車：Sixt/Europcar 布達佩斯機場或市區均有，每日約 HUF 15,000–25,000</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>⛴ 巴拉頓湖渡輪（BAHART）</h4>
+    <ul>
+      <li>Balatonfüred ↔ Tihany：10 分鐘，HUF 700 單程，夏末每小時一班</li>
+      <li>Tihany ↔ Badacsony：渡輪約 40 分鐘，HUF 1,500</li>
+      <li>9 月底班次縮減，出發前查 balatoni.info 確認時刻</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 實用資訊 -->
+<div class="section" id="sec4">
+  <div class="tip">
+    <h4>💰 匈牙利消費參考</h4>
+    <ul>
+      <li>餐廳主食：HUF 3,000–6,000（約 NT$270–540）</li>
+      <li>街頭小食（Lángos）：HUF 800–1,200（約 NT$70–110）</li>
+      <li>溫泉票（Széchenyi）：HUF 9,000–12,000（約 NT$810–1,080）</li>
+      <li>地鐵單程：HUF 450（約 NT$40）</li>
+      <li>貨幣：HUF，1 HUF ≈ 0.09 NT$；建議換歐元再到當地換福林，或刷 Wise 卡</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🌡 9月氣候</h4>
+    <ul>
+      <li>布達佩斯：14–23°C，晴多雨少，全年最佳旅遊月份之一</li>
+      <li>北部山區（Mátra、Aggtelek）比城市涼 3–5°C，需備薄外套</li>
+      <li>洞穴內全年恆溫 10°C，務必帶夾克</li>
+      <li>巴拉頓湖 9 月仍可游泳（水溫約 20–22°C），但渡輪班次減少</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>♨️ 布達佩斯溫泉指南</h4>
+    <ul>
+      <li><strong>Széchenyi</strong>：最大最熱鬧，新文藝復興建築，HUF 9,000 起（戶外+室內池）</li>
+      <li><strong>Gellért</strong>：新藝術風格，布達側，HUF 10,000 起，最上相</li>
+      <li><strong>Rudas</strong>：16 世紀土耳其式穹頂，HUF 5,800 起，最有歷史感</li>
+      <li>建議早上 9–11 點入場人最少；攜帶泳衣，泳帽/毛巾可現場租借</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>📱 推薦 App & 資訊</h4>
+    <ul>
+      <li><strong>BKK Futár</strong>：布達佩斯大眾運輸即時查詢</li>
+      <li><strong>MÁV-Start</strong>：匈牙利國鐵購票 App</li>
+      <li><strong>Bolt</strong>：叫車 App（比計程車便宜 40–60%）</li>
+      <li><strong>Google Translate</strong>：匈牙利語較難，翻譯相機功能很實用</li>
+      <li>插座：Type F（圓頭兩腳），與台灣不同，需帶萬用轉接頭</li>
+      <li>緊急電話：112（通報）/ 104（救護）/ 105（消防）/ 107（警察）</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🛂 簽證 & 入境</h4>
+    <ul>
+      <li>匈牙利屬申根區，台灣護照免簽，最多 90 天（180 天內）</li>
+      <li>2025 年起 ETIAS 電子旅行授權生效，費用 €7，提前 3 天申請</li>
+      <li>購買申根旅遊險，醫療保障至少 €30,000（申根規定）</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🍽 必嚐美食 & 伴手禮</h4>
+    <ul>
+      <li><strong>Gulyás</strong>（古拉什湯）：匈牙利牛肉湯，每人必試</li>
+      <li><strong>Lángos</strong>：街頭炸麵餅，配酸奶油+起司，CP 值極高</li>
+      <li><strong>Kürtőskalács</strong>：煙囪蛋糕，旋轉烤制外脆內軟</li>
+      <li><strong>Pálinka</strong>：水果白蘭地（杏桃/李子），帶回台灣超受歡迎</li>
+      <li><strong>Tokaji Aszú</strong>：貴腐甜白酒，拿破崙稱「王中之王」</li>
+      <li>伴手禮：Herend 手繪瓷器、辣椒粉 Paprika、Rubik's Cube（發明地）</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function showTab(idx) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.section').forEach((s,i) => s.classList.toggle('active', i===idx));
+  document.getElementById('tabs').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+</body>
+</html>
