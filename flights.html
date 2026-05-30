@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台灣直飛航線總覽</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f4f1;color:#1a1a18;font-size:14px;line-height:1.6}
+.hero{background:linear-gradient(160deg,#0a2240 0%,#1a4a7a 60%,#0d6e6e 100%);color:#fff;padding:1.8rem 1.25rem 1.4rem;text-align:center}
+.hero h1{font-size:20px;font-weight:600;margin-bottom:4px}
+.hero p{font-size:12px;opacity:.8}
+.filter-bar{background:#fff;border-bottom:1px solid #e0ddd6;padding:10px 1rem;display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.filter-btn{padding:5px 12px;border-radius:20px;border:1px solid #ddd;background:#f4f4f1;font-size:12px;cursor:pointer;white-space:nowrap}
+.filter-btn.active{background:#1a4a7a;color:#fff;border-color:#1a4a7a}
+.content{padding:1rem}
+.region{margin-bottom:1.2rem}
+.region-title{font-size:11px;font-weight:700;color:#888;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;padding-left:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.card{background:#fff;border-radius:10px;padding:10px 12px;border:.5px solid #e0ddd6;cursor:default}
+.card:hover{border-color:#1a4a7a;box-shadow:0 2px 8px rgba(26,74,122,.1)}
+.card .city{font-size:13px;font-weight:600;margin-bottom:2px}
+.card .code{font-size:11px;color:#aaa;font-family:monospace}
+.card .freq{font-size:11px;color:#888;margin-top:3px}
+.card .freq span{color:#1a4a7a;font-weight:600}
+.dot-high{display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;margin-right:4px;vertical-align:middle}
+.dot-mid{display:inline-block;width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-right:4px;vertical-align:middle}
+.dot-low{display:inline-block;width:6px;height:6px;border-radius:50%;background:#e5e7eb;margin-right:4px;vertical-align:middle}
+.stat-bar{display:flex;gap:16px;background:#fff;padding:10px 1rem;border-bottom:1px solid #e0ddd6;font-size:12px;color:#666;flex-wrap:wrap}
+.stat-bar strong{color:#1a1a18}
+[data-region].hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div style="font-size:24px;margin-bottom:6px">✈️ 🇹🇼</div>
+  <h1>台灣直飛航線總覽</h1>
+  <p>桃園國際機場（TPE）· 共 102 個目的地 · 29 個國家（2026年）</p>
+</div>
+
+<div class="stat-bar">
+  <span>🇯🇵 日本 <strong>27</strong> 個城市</span>
+  <span>🇰🇷 韓國 <strong>5</strong> 個城市</span>
+  <span>🌏 東南亞 <strong>20+</strong> 個城市</span>
+  <span>🇺🇸 美國 <strong>8</strong> 個城市</span>
+  <span>🌍 歐洲 <strong>10+</strong> 個城市</span>
+  <span>🇦🇺 澳洲/紐西蘭 <strong>3</strong> 個城市</span>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterRegion('all')">全部</button>
+  <button class="filter-btn" onclick="filterRegion('jp')">🇯🇵 日本</button>
+  <button class="filter-btn" onclick="filterRegion('kr')">🇰🇷 韓國</button>
+  <button class="filter-btn" onclick="filterRegion('sea')">🌏 東南亞</button>
+  <button class="filter-btn" onclick="filterRegion('cn')">🇨🇳 中國</button>
+  <button class="filter-btn" onclick="filterRegion('us')">🇺🇸 美國/加拿大</button>
+  <button class="filter-btn" onclick="filterRegion('eu')">🌍 歐洲/中東</button>
+  <button class="filter-btn" onclick="filterRegion('au')">🇦🇺 澳洲/紐西蘭</button>
+</div>
+
+<div class="content">
+
+  <!-- 日本 -->
+  <div class="region" data-region="jp">
+    <div class="region-title">🇯🇵 日本 Japan — 27 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">東京 成田 Tokyo</div><div class="code">NRT</div><div class="freq"><span class="dot-high"></span><span>653</span> 班/月</div></div>
+      <div class="card"><div class="city">大阪 Osaka</div><div class="code">KIX</div><div class="freq"><span class="dot-high"></span><span>543</span> 班/月</div></div>
+      <div class="card"><div class="city">沖繩 Okinawa</div><div class="code">OKA</div><div class="freq"><span class="dot-high"></span><span>404</span> 班/月</div></div>
+      <div class="card"><div class="city">福岡 Fukuoka</div><div class="code">FUK</div><div class="freq"><span class="dot-high"></span><span>~250</span> 班/月</div></div>
+      <div class="card"><div class="city">札幌 Sapporo</div><div class="code">CTS</div><div class="freq"><span class="dot-mid"></span><span>164</span> 班/月</div></div>
+      <div class="card"><div class="city">仙台 Sendai</div><div class="code">SDJ</div><div class="freq"><span class="dot-mid"></span><span>70</span> 班/月</div></div>
+      <div class="card"><div class="city">東京 羽田 Tokyo</div><div class="code">HND</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">神戶 Kobe</div><div class="code">UKB</div><div class="freq"><span class="dot-mid"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">熊本 Kumamoto</div><div class="code">KMJ</div><div class="freq"><span class="dot-mid"></span><span>51</span> 班/月</div></div>
+      <div class="card"><div class="city">小松 Komatsu</div><div class="code">KMQ</div><div class="freq"><span class="dot-low"></span><span>39</span> 班/月</div></div>
+      <div class="card"><div class="city">岡山 Okayama</div><div class="code">OKJ</div><div class="freq"><span class="dot-low"></span><span>39</span> 班/月</div></div>
+      <div class="card"><div class="city">函館 Hakodate</div><div class="code">HKD</div><div class="freq"><span class="dot-low"></span><span>35</span> 班/月</div></div>
+      <div class="card"><div class="city">青森 Aomori</div><div class="code">AOJ</div><div class="freq"><span class="dot-low"></span><span>28</span> 班/月</div></div>
+      <div class="card"><div class="city">廣島 Hiroshima</div><div class="code">HIJ</div><div class="freq"><span class="dot-low"></span><span>22</span> 班/月</div></div>
+      <div class="card"><div class="city">佐賀 Saga</div><div class="code">HSG</div><div class="freq"><span class="dot-low"></span><span>13</span> 班/月</div></div>
+      <div class="card"><div class="city">下地島 Shimoji</div><div class="code">SHI</div><div class="freq"><span class="dot-low"></span><span>13</span> 班/月</div></div>
+      <div class="card"><div class="city">松山 Matsuyama</div><div class="code">MYJ</div><div class="freq"><span class="dot-low"></span><span>17</span> 班/月</div></div>
+      <div class="card"><div class="city">富山 Toyama</div><div class="code">TOY</div><div class="freq"><span class="dot-low"></span><span>15</span> 班/月</div></div>
+      <div class="card"><div class="city">石垣島 Ishigaki</div><div class="code">ISG</div><div class="freq"><span class="dot-low"></span><span>9</span> 班/月</div></div>
+      <div class="card"><div class="city">秋田 Akita</div><div class="code">AXT</div><div class="freq"><span class="dot-low"></span><span>9</span> 班/月</div></div>
+      <div class="card"><div class="city">高知 Kochi</div><div class="code">KCZ</div><div class="freq"><span class="dot-low"></span><span>9</span> 班/月</div></div>
+      <div class="card"><div class="city">大分 Oita</div><div class="code">OIT</div><div class="freq"><span class="dot-low"></span><span>9</span> 班/月</div></div>
+      <div class="card"><div class="city">米子 Yonago</div><div class="code">YGJ</div><div class="freq"><span class="dot-low"></span><span>8</span> 班/月</div></div>
+      <div class="card"><div class="city">宮崎 Miyazaki</div><div class="code">KMI</div><div class="freq"><span class="dot-low"></span><span>8</span> 班/月</div></div>
+      <div class="card"><div class="city">福島 Fukushima</div><div class="code">FKS</div><div class="freq"><span class="dot-low"></span><span>8</span> 班/月</div></div>
+      <div class="card"><div class="city">花卷 Hanamaki</div><div class="code">HNA</div><div class="freq"><span class="dot-low"></span><span>7</span> 班/月</div></div>
+      <div class="card"><div class="city">新潟 Niigata</div><div class="code">KIJ</div><div class="freq"><span class="dot-low"></span><span>6</span> 班/月</div></div>
+    </div>
+  </div>
+
+  <!-- 韓國 -->
+  <div class="region" data-region="kr">
+    <div class="region-title">🇰🇷 韓國 South Korea — 5 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">首爾 Seoul</div><div class="code">ICN</div><div class="freq"><span class="dot-high"></span><span>400</span> 班/月</div></div>
+      <div class="card"><div class="city">釜山 Busan</div><div class="code">PUS</div><div class="freq"><span class="dot-high"></span><span>375</span> 班/月</div></div>
+      <div class="card"><div class="city">濟州 Jeju</div><div class="code">CJU</div><div class="freq"><span class="dot-mid"></span><span>121</span> 班/月</div></div>
+      <div class="card"><div class="city">清州 Cheongju</div><div class="code">CJJ</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">大邱 Daegu</div><div class="code">TAE</div><div class="freq"><span class="dot-low"></span><span>32</span> 班/月</div></div>
+    </div>
+  </div>
+
+  <!-- 東南亞 -->
+  <div class="region" data-region="sea">
+    <div class="region-title">🌏 東南亞 Southeast Asia — 20+ 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">香港 Hong Kong</div><div class="code">HKG</div><div class="freq"><span class="dot-high"></span><span>1,098</span> 班/月</div></div>
+      <div class="card"><div class="city">曼谷 Bangkok</div><div class="code">BKK</div><div class="freq"><span class="dot-high"></span><span>479</span> 班/月</div></div>
+      <div class="card"><div class="city">馬尼拉 Manila</div><div class="code">MNL</div><div class="freq"><span class="dot-high"></span><span>398</span> 班/月</div></div>
+      <div class="card"><div class="city">新加坡 Singapore</div><div class="code">SIN</div><div class="freq"><span class="dot-high"></span><span>325</span> 班/月</div></div>
+      <div class="card"><div class="city">胡志明市 Ho Chi Minh</div><div class="code">SGN</div><div class="freq"><span class="dot-high"></span><span>269</span> 班/月</div></div>
+      <div class="card"><div class="city">澳門 Macau</div><div class="code">MFM</div><div class="freq"><span class="dot-high"></span><span>239</span> 班/月</div></div>
+      <div class="card"><div class="city">河內 Hanoi</div><div class="code">HAN</div><div class="freq"><span class="dot-mid"></span><span>210</span> 班/月</div></div>
+      <div class="card"><div class="city">吉隆坡 Kuala Lumpur</div><div class="code">KUL</div><div class="freq"><span class="dot-mid"></span><span>163</span> 班/月</div></div>
+      <div class="card"><div class="city">雅加達 Jakarta</div><div class="code">CGK</div><div class="freq"><span class="dot-mid"></span><span>94</span> 班/月</div></div>
+      <div class="card"><div class="city">清邁 Chiang Mai</div><div class="code">CNX</div><div class="freq"><span class="dot-mid"></span><span>90</span> 班/月</div></div>
+      <div class="card"><div class="city">曼谷廊曼 Bangkok DMK</div><div class="code">DMK</div><div class="freq"><span class="dot-mid"></span><span>86</span> 班/月</div></div>
+      <div class="card"><div class="city">宿霧 Cebu</div><div class="code">CEB</div><div class="freq"><span class="dot-mid"></span><span>81</span> 班/月</div></div>
+      <div class="card"><div class="city">峇里島 Bali</div><div class="code">DPS</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">安赫利斯 Angeles</div><div class="code">CRK</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">金邊 Phnom Penh</div><div class="code">PNH</div><div class="freq"><span class="dot-mid"></span><span>50</span> 班/月</div></div>
+      <div class="card"><div class="city">富國島 Phu Quoc</div><div class="code">PQC</div><div class="freq"><span class="dot-low"></span><span>48</span> 班/月</div></div>
+      <div class="card"><div class="city">普吉島 Phuket</div><div class="code">HKT</div><div class="freq"><span class="dot-low"></span><span>8</span> 班/月</div></div>
+      <div class="card"><div class="city">檳城 Penang</div><div class="code">PEN</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">亞庇 Kota Kinabalu</div><div class="code">BKI</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">仰光 Yangon</div><div class="code">RGN</div><div class="freq"><span class="dot-low"></span><span>5</span> 班/月</div></div>
+      <div class="card"><div class="city">汶萊 Brunei</div><div class="code">BWN</div><div class="freq"><span class="dot-low"></span><span>13</span> 班/月</div></div>
+    </div>
+  </div>
+
+  <!-- 中國 -->
+  <div class="region" data-region="cn">
+    <div class="region-title">🇨🇳 中國大陸 China — 14+ 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">上海浦東 Shanghai</div><div class="code">PVG</div><div class="freq"><span class="dot-high"></span><span>290</span> 班/月</div></div>
+      <div class="card"><div class="city">北京 Beijing</div><div class="code">PEK</div><div class="freq"><span class="dot-mid"></span><span>124</span> 班/月</div></div>
+      <div class="card"><div class="city">深圳 Shenzhen</div><div class="code">SZX</div><div class="freq"><span class="dot-mid"></span><span>103</span> 班/月</div></div>
+      <div class="card"><div class="city">廣州 Guangzhou</div><div class="code">CAN</div><div class="freq"><span class="dot-mid"></span><span>76</span> 班/月</div></div>
+      <div class="card"><div class="city">廈門 Xiamen</div><div class="code">XMN</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">南京 Nanjing</div><div class="code">NKG</div><div class="freq"><span class="dot-low"></span><span>34</span> 班/月</div></div>
+      <div class="card"><div class="city">成都 Chengdu</div><div class="code">TFU</div><div class="freq"><span class="dot-low"></span><span>33</span> 班/月</div></div>
+      <div class="card"><div class="city">寧波 Ningbo</div><div class="code">NGB</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">青島 Qingdao</div><div class="code">TAO</div><div class="freq"><span class="dot-low"></span><span>16</span> 班/月</div></div>
+      <div class="card"><div class="city">福州 Fuzhou</div><div class="code">FOC</div><div class="freq"><span class="dot-low"></span><span>~20</span> 班/月</div></div>
+      <div class="card"><div class="city">杭州 Hangzhou</div><div class="code">HGH</div><div class="freq"><span class="dot-low"></span><span>~20</span> 班/月</div></div>
+      <div class="card"><div class="city">武漢 Wuhan</div><div class="code">WUH</div><div class="freq"><span class="dot-low"></span><span>~15</span> 班/月</div></div>
+      <div class="card"><div class="city">重慶 Chongqing</div><div class="code">CKG</div><div class="freq"><span class="dot-low"></span><span>~15</span> 班/月</div></div>
+      <div class="card"><div class="city">鄭州 Zhengzhou</div><div class="code">CGO</div><div class="freq"><span class="dot-low"></span><span>~10</span> 班/月</div></div>
+    </div>
+  </div>
+
+  <!-- 美國/加拿大 -->
+  <div class="region" data-region="us">
+    <div class="region-title">🌎 美國 &amp; 加拿大 — 10 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">舊金山 San Francisco</div><div class="code">SFO</div><div class="freq"><span class="dot-mid"></span><span>210</span> 班/月</div></div>
+      <div class="card"><div class="city">洛杉磯 Los Angeles</div><div class="code">LAX</div><div class="freq"><span class="dot-mid"></span><span>148</span> 班/月</div></div>
+      <div class="card"><div class="city">西雅圖 Seattle</div><div class="code">SEA</div><div class="freq"><span class="dot-mid"></span><span>123</span> 班/月</div></div>
+      <div class="card"><div class="city">溫哥華 Vancouver</div><div class="code">YVR</div><div class="freq"><span class="dot-mid"></span><span>60</span> 班/月</div></div>
+      <div class="card"><div class="city">紐約 New York</div><div class="code">JFK</div><div class="freq"><span class="dot-low"></span><span>47</span> 班/月</div></div>
+      <div class="card"><div class="city">安大略 Ontario CA</div><div class="code">ONT</div><div class="freq"><span class="dot-low"></span><span>45</span> 班/月</div></div>
+      <div class="card"><div class="city">多倫多 Toronto</div><div class="code">YYZ</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">休士頓 Houston</div><div class="code">IAH</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">芝加哥 Chicago</div><div class="code">ORD</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">達拉斯 Dallas</div><div class="code">DFW</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+    </div>
+  </div>
+
+  <!-- 歐洲/中東 -->
+  <div class="region" data-region="eu">
+    <div class="region-title">🌍 歐洲 &amp; 中東 — 13 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">伊斯坦堡 Istanbul</div><div class="code">IST</div><div class="freq"><span class="dot-low"></span><span>43</span> 班/月</div></div>
+      <div class="card"><div class="city">阿姆斯特丹 Amsterdam</div><div class="code">AMS</div><div class="freq"><span class="dot-low"></span><span>34</span> 班/月</div></div>
+      <div class="card"><div class="city">巴黎 Paris</div><div class="code">CDG</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">杜拜 Dubai</div><div class="code">DXB</div><div class="freq"><span class="dot-low"></span><span>30</span> 班/月</div></div>
+      <div class="card"><div class="city">法蘭克福 Frankfurt</div><div class="code">FRA</div><div class="freq"><span class="dot-low"></span><span>29</span> 班/月</div></div>
+      <div class="card"><div class="city">慕尼黑 Munich</div><div class="code">MUC</div><div class="freq"><span class="dot-low"></span><span>17</span> 班/月</div></div>
+      <div class="card"><div class="city">米蘭 Milan</div><div class="code">MXP</div><div class="freq"><span class="dot-low"></span><span>17</span> 班/月</div></div>
+      <div class="card"><div class="city">倫敦 London</div><div class="code">LHR</div><div class="freq"><span class="dot-low"></span><span>21</span> 班/月</div></div>
+      <div class="card"><div class="city">羅馬 Rome</div><div class="code">FCO</div><div class="freq"><span class="dot-low"></span><span>8</span> 班/月</div></div>
+      <div class="card"><div class="city">布魯塞爾 Brussels</div><div class="code">BRU</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+      <div class="card"><div class="city">杜塞道夫 Düsseldorf</div><div class="code">DUS</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+      <div class="card"><div class="city">維也納 Vienna</div><div class="code">VIE</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+      <div class="card"><div class="city">阿布達比 Abu Dhabi</div><div class="code">AUH</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+    </div>
+  </div>
+
+  <!-- 澳洲/紐西蘭 -->
+  <div class="region" data-region="au">
+    <div class="region-title">🇦🇺 澳洲 &amp; 紐西蘭 — 3 個城市</div>
+    <div class="grid">
+      <div class="card"><div class="city">雪梨 Sydney</div><div class="code">SYD</div><div class="freq"><span class="dot-low"></span><span>22</span> 班/月</div></div>
+      <div class="card"><div class="city">墨爾本 Melbourne</div><div class="code">MEL</div><div class="freq"><span class="dot-low"></span><span>17</span> 班/月</div></div>
+      <div class="card"><div class="city">奧克蘭 Auckland</div><div class="code">AKL</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+    </div>
+  </div>
+
+  <!-- 其他 -->
+  <div class="region" data-region="au">
+    <div class="region-title">🏝 其他</div>
+    <div class="grid">
+      <div class="card"><div class="city">關島 Guam</div><div class="code">GUM</div><div class="freq"><span class="dot-low"></span><span>9</span> 班/月</div></div>
+      <div class="card"><div class="city">帛琉 Palau</div><div class="code">ROR</div><div class="freq"><span class="dot-low"></span><span>季節</span></div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:12px 16px;background:#fff;border-radius:10px;border:.5px solid #e0ddd6;font-size:12px;color:#888;line-height:1.8">
+    <strong style="color:#444">說明</strong><br>
+    <span class="dot-high"></span>深綠 = 高頻（每月 200+ 班）
+    <span class="dot-mid"></span>黃 = 中頻（50–200 班）
+    <span class="dot-low"></span>灰 = 低頻（&lt;50 班 / 季節性）<br>
+    資料來源：FlightConnections.com，2026 年 5 月。中國大陸部分城市頻率為估算。「季節」表示非全年運營。
+  </div>
+
+</div>
+
+<script>
+function filterRegion(region) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.region').forEach(r => {
+    if (region === 'all' || r.dataset.region === region) {
+      r.classList.remove('hidden');
+    } else {
+      r.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
