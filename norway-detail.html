@@ -67,6 +67,12 @@ body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:
 .rem-body{color:var(--muted);line-height:1.6}
 .rem-body strong{color:var(--text)}
 
+.map-section{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:22px;overflow:hidden}
+.map-head{padding:14px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.map-head h2{font-size:.95rem;font-weight:700}
+.map-head span{font-size:.78rem;color:var(--muted)}
+.map-wrap{position:relative;width:100%;padding-bottom:56%;height:0;overflow:hidden}
+.map-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .footer{text-align:center;font-size:.78rem;color:#4a6878;margin-top:36px;padding-top:18px;border-top:1px solid #1a2a38}
 @media(max-width:600px){
   .tl-left{width:62px}
@@ -95,7 +101,18 @@ body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:
 
 <div class="container">
 
+<div class="map-section" id="map">
+  <div class="map-head">
+    <h2>🗺 挪威行程地圖</h2>
+    <span>Oslo → Flåm → Voss → Bergen → Odda → Loen → Geiranger</span>
+  </div>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/d/embed?mid=1Qdunu4atqAtdozF2Sp9Nmu-lTZPVafg&ehbc=2E312F" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
 <div class="qnav">
+  <a href="#map">🗺 地圖</a>
   <a href="#d1">Day1 抵達Oslo</a>
   <a href="#d2">Day2→Flåm</a>
   <a href="#d3">Day3→Voss</a>
@@ -637,23 +654,4 @@ body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:
   </div>
   <div class="rem-item">
     <div class="rem-icon">⛵</div>
-    <div class="rem-body"><strong>Hellesylt 渡輪／Dalsnibba（9/28）</strong>：季節性、9 月底班次少，<strong>前一晚確認時刻</strong>。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">✈</div>
-    <div class="rem-body"><strong>回程（9/29）</strong>：所有時間以實際航班往前推；若班機很早，考慮 9/29 改在 Ålesund 過夜。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">🚗</div>
-    <div class="rem-body"><strong>租車</strong>：9/25 Bergen 取車，確認 AutoPASS 感應器（渡輪/過路費自動扣款），9/29 Ålesund 還車（跨點還車費，先比價）。</div>
-  </div>
-</div>
-
-<div class="footer">
-  行程版本：2026 年 Norway Plan Project ｜ 票價、時刻出發前以 Vy／官方平台再次確認<br>
-  <a href="norway-flights.html" style="color:var(--accent);text-decoration:none">✈ 台灣飛挪威航班比較 →</a>
-</div>
-
-</div>
-</body>
-</html>
+    <div class="rem-
