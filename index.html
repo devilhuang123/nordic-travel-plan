@@ -3,811 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北歐冰島 10 天旅遊計劃</title>
+<title>挪威旅遊計劃 11天</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #f5f4f0;
-    color: #1a1a18;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* Header */
-  .hero {
-    background: linear-gradient(160deg, #0c447c 0%, #185fa5 60%, #1d9e75 100%);
-    color: #fff;
-    padding: 2.5rem 1.25rem 2rem;
-    text-align: center;
-  }
-  .hero h1 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
-  .hero p { font-size: 13px; opacity: 0.85; line-height: 1.7; }
-  .badge-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-  .badge {
-    font-size: 11px; font-weight: 500; padding: 3px 10px;
-    border-radius: 20px; border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
-  }
-
-  /* Leave box */
-  .leave-box {
-    margin: 1.25rem 1rem 0;
-    background: #eaf3de; border-radius: 12px; padding: 14px 16px;
-    border-left: 3px solid #639922;
-  }
-  .leave-box strong { color: #3b6d11; font-size: 13px; display: block; margin-bottom: 4px; }
-  .leave-box span { font-size: 12px; color: #3b6d11; line-height: 1.7; }
-
-  /* Nav tabs */
-  .tabs {
-    position: sticky; top: 0; z-index: 100;
-    background: #fff; border-bottom: 1px solid #e0ddd6;
-    display: flex; overflow-x: auto; padding: 0 1rem;
-    scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab {
-    flex-shrink: 0; padding: 12px 14px; font-size: 13px; font-weight: 500;
-    color: #888; border-bottom: 2px solid transparent; cursor: pointer;
-    white-space: nowrap; transition: color 0.2s;
-  }
-  .tab.active { color: #185fa5; border-bottom-color: #185fa5; }
-
-  /* Sections */
-  .section { display: none; padding: 1rem; }
-  .section.active { display: block; }
-
-  /* Day cards */
-  .day-card {
-    background: #fff; border-radius: 12px; padding: 14px 16px;
-    margin-bottom: 10px; border: 0.5px solid #e0ddd6;
-  }
-  .day-card.highlight { border-left: 3px solid #ef9f27; }
-  .day-meta {
-    display: flex; gap: 6px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;
-  }
-  .day-tag {
-    font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 6px;
-    background: #f1efe8; color: #5f5e5a;
-  }
-  .day-tag.moon { background: #faeeda; color: #854f0b; }
-  .day-card h3 { font-size: 15px; font-weight: 600; color: #1a1a18; margin-bottom: 6px; }
-  .day-card p { font-size: 13px; color: #5f5e5a; line-height: 1.7; }
-  .spots { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-  .spot {
-    font-size: 11px; background: #e6f1fb; color: #0c447c;
-    border-radius: 6px; padding: 2px 8px;
-  }
-
-  /* Budget */
-  .budget-card {
-    background: #fff; border-radius: 12px; padding: 14px 16px;
-    border: 0.5px solid #e0ddd6; margin-bottom: 12px;
-  }
-  .budget-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 9px 0; border-bottom: 0.5px solid #f1efe8; font-size: 13px;
-  }
-  .budget-row:last-child { border-bottom: none; font-weight: 600; font-size: 14px; padding-top: 12px; }
-  .budget-label { color: #5f5e5a; }
-  .budget-total { color: #0f6e56; }
-  .tip {
-    background: #e1f5ee; border-radius: 10px; padding: 10px 14px;
-    font-size: 12px; color: #0f6e56; line-height: 1.6;
-  }
-
-  /* Aurora */
-  .info-card {
-    background: #fff; border-radius: 12px; padding: 14px 16px;
-    border: 0.5px solid #e0ddd6; margin-bottom: 12px;
-  }
-  .info-row {
-    display: flex; gap: 10px; padding: 8px 0;
-    border-bottom: 0.5px solid #f1efe8; font-size: 13px; align-items: flex-start;
-  }
-  .info-row:last-child { border-bottom: none; }
-  .info-label { color: #888; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
-  .info-val { color: #1a1a18; line-height: 1.5; }
-
-  /* Checklist */
-  .check-item {
-    display: flex; gap: 10px; align-items: flex-start;
-    padding: 9px 0; border-bottom: 0.5px solid #f1efe8; font-size: 13px; color: #444;
-    cursor: pointer; user-select: none;
-  }
-  .check-item:last-child { border-bottom: none; }
-  .check-box {
-    width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;
-    border: 1.5px solid #b4b2a9; margin-top: 1px; transition: all 0.15s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .check-item.done .check-box { background: #1d9e75; border-color: #1d9e75; }
-  .check-item.done .check-box::after { content: '✓'; color: #fff; font-size: 11px; font-weight: 700; }
-  .check-item.done span { text-decoration: line-through; color: #b4b2a9; }
-
-  /* Tips */
-  .tip-row {
-    display: flex; gap: 10px; padding: 9px 0;
-    border-bottom: 0.5px solid #f1efe8; font-size: 13px; align-items: flex-start;
-  }
-  .tip-row:last-child { border-bottom: none; }
-  .tip-icon { font-size: 18px; flex-shrink: 0; }
-  .tip-text { color: #1a1a18; line-height: 1.5; }
-
-  .section-title { font-size: 15px; font-weight: 600; color: #1a1a18; margin-bottom: 12px; }
-  .section-desc { font-size: 13px; color: #5f5e5a; line-height: 1.7; margin-bottom: 14px; }
-
-  footer {
-    text-align: center; padding: 2rem 1rem;
-    font-size: 11px; color: #b4b2a9;
-  }
-
-  /* Photos */
-  .day-photo {
-    width: calc(100% + 32px); margin-left: -16px; margin-top: -14px;
-    height: 160px; object-fit: cover;
-    border-radius: 12px 12px 0 0;
-    display: block; margin-bottom: 12px;
-    background: #e0ddd6;
-  }
-  .aurora-photo {
-    width: 100%; height: 190px; object-fit: cover;
-    border-radius: 10px; display: block; margin-bottom: 14px;
-    background: #1a1a30;
-  }
-  .photo-credit {
-    font-size: 10px; color: #b4b2a9; margin-top: -8px; margin-bottom: 10px;
-    text-align: right;
-  }
-
-  /* Hotel / Route section */
-  .route-banner {
-    background: #e8f4fd; border: 1px solid #c3dff6; border-radius: 12px;
-    padding: 12px 14px; margin-bottom: 14px;
-    display: flex; gap: 10px; align-items: flex-start;
-  }
-  .route-banner-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .route-banner p { font-size: 12px; color: #185fa5; line-height: 1.6; }
-  .route-banner strong { display: block; font-size: 13px; margin-bottom: 2px; }
-
-  .hotel-card {
-    background: #fff; border-radius: 12px; padding: 14px 16px;
-    margin-bottom: 10px; border: 0.5px solid #e0ddd6;
-    border-left: 3px solid #185fa5;
-  }
-  .hotel-card.hot { border-left-color: #e53e3e; }
-  .hotel-card.moon-card { border-left-color: #8b5cf6; }
-  .hotel-card.mid { border-left-color: #ef9f27; }
-
-  .hotel-nights {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    background: #185fa5; color: #fff; border-radius: 5px;
-    padding: 2px 8px; margin-bottom: 8px;
-  }
-  .hotel-nights.hot { background: #e53e3e; }
-  .hotel-nights.moon-n { background: #8b5cf6; }
-  .hotel-nights.mid { background: #ef9f27; }
-
-  .hotel-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .hotel-card .days-tag { font-size: 11px; color: #888; margin-bottom: 8px; }
-
-  .hotel-area-row {
-    display: flex; gap: 6px; align-items: flex-start; margin-bottom: 6px;
-  }
-  .hotel-area-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-  .hotel-area-text { font-size: 12px; color: #1a1a18; line-height: 1.5; }
-  .hotel-area-text strong { display: block; font-size: 12px; font-weight: 600; color: #185fa5; }
-
-  .hotel-note { font-size: 12px; color: #5f5e5a; line-height: 1.6; margin-top: 6px; }
-
-  .priority-badge {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    background: #fff0f0; color: #c53030; border-radius: 5px;
-    padding: 2px 8px; margin-top: 6px;
-  }
-
-  .drive-strip {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 0; margin: 2px 0;
-    color: #888; font-size: 12px;
-  }
-  .drive-strip::before, .drive-strip::after {
-    content: ''; flex: 1; border-top: 1px dashed #d0cec8;
-  }
-
-  .warning-card {
-    background: #faeeda; border-radius: 10px; padding: 12px 14px;
-    margin-bottom: 14px; font-size: 12px; color: #633806; line-height: 1.7;
-  }
-  .warning-card strong { display: block; margin-bottom: 3px; font-size: 13px; }
-
-  .booking-priority {
-    background: #fff; border-radius: 12px; border: 0.5px solid #e0ddd6;
-    margin-bottom: 14px; overflow: hidden;
-  }
-  .booking-priority-title {
-    background: #1a1a18; color: #fff; font-size: 13px; font-weight: 600;
-    padding: 10px 14px;
-  }
-  .priority-row {
-    display: flex; gap: 10px; align-items: flex-start;
-    padding: 10px 14px; border-bottom: 0.5px solid #f1efe8; font-size: 13px;
-  }
-  .priority-row:last-child { border-bottom: none; }
-  .priority-num {
-    width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: #fff; background: #e53e3e; margin-top: 1px;
-  }
-  .priority-num.p2 { background: #ef9f27; }
-  .priority-num.p3 { background: #185fa5; }
-  .priority-info strong { display: block; font-size: 13px; margin-bottom: 2px; }
-  .priority-info span { font-size: 12px; color: #5f5e5a; }
-
-  .map-link {
-    display: inline-flex; align-items: center; gap: 3px;
-    font-size: 11px; color: #185fa5; text-decoration: none;
-    background: #e6f1fb; border-radius: 5px; padding: 1px 7px;
-    margin-left: 6px; font-weight: 500; vertical-align: middle;
-    white-space: nowrap;
-  }
-  .map-link:hover { background: #c3dff6; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f4f1;color:#1a1a18;font-size:15px;line-height:1.6}
+.hero{background:linear-gradient(160deg,#0a2e52 0%,#1a5276 55%,#1a7a5e 100%);color:#fff;padding:2rem 1.25rem 1.5rem;text-align:center}
+.hero h1{font-size:20px;font-weight:600;margin-bottom:6px}
+.hero p{font-size:13px;opacity:.85}
+.tabs{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e0ddd6;display:flex;overflow-x:auto;padding:0 1rem;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:12px 14px;font-size:13px;font-weight:500;color:#888;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.tab.active{color:#1a5276;border-bottom-color:#1a5276}
+.section{display:none;padding:1rem}
+.section.active{display:block}
+.day{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.day.moon{border-left:3px solid #f39c12;background:#fffdf5}
+.day h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.day p{font-size:13px;color:#5f5e5a;line-height:1.7}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:#f1efe8;color:#5f5e5a;margin-right:4px;margin-bottom:6px}
+.tag.fjord{background:#e3f2fd;color:#0d47a1}
+.tag.city{background:#f3e5f5;color:#4a148c}
+.tag.troll{background:#e8f5e9;color:#1b5e20}
+.tag.moon{background:#faeeda;color:#854f0b}
+.tag.travel{background:#fff3e0;color:#e65100}
+.warn{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:12px;color:#7d6608}
+.hotel{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.hotel h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.hotel p{font-size:12px;color:#5f5e5a}
+.tip{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:.5px solid #e0ddd6}
+.tip h4{font-size:14px;font-weight:600;margin-bottom:8px}
+.tip li{font-size:13px;color:#5f5e5a;line-height:1.7;margin-left:18px;margin-bottom:3px}
+.sec-title{font-size:12px;font-weight:600;color:#aaa;letter-spacing:.5px;text-transform:uppercase;margin:16px 0 8px}
+.notice{margin:1rem 1rem 0;background:#fef9ec;border-radius:12px;padding:14px 16px;border-left:3px solid #d4ac0d;font-size:12px;color:#7d6608}
 </style>
 </head>
 <body>
 <div style="background:#1a1a18;padding:10px 16px;text-align:center;font-size:13px;letter-spacing:.3px">
-  <a href="index.html" style="color:#fff;margin:0 10px;text-decoration:none">🇮🇸 冰島</a>
-  <a href="norway.html" style="color:#aaa;margin:0 10px;text-decoration:none">🇳🇴 挪威</a>
-  <a href="budapest.html" style="color:#aaa;margin:0 10px;text-decoration:none">🇭🇺 布達佩斯</a>
+  <a href="index.html" style="color:#aaa;margin:0 10px;text-decoration:none"><strong style="color:#fff">🇳🇴 挪威</strong></a>
+  <a href="norway-detail.html" style="color:#aaa;margin:0 10px;text-decoration:none">📋 行程細節</a>
+  <a href="norway-flights.html" style="color:#aaa;margin:0 10px;text-decoration:none">✈ 挪威航班</a>
+  <a href="flights.html" style="color:#aaa;margin:0 10px;text-decoration:none">🛫 直飛總覽</a>
+  <a href="norway-todo.html" style="color:#aaa;margin:0 10px;text-decoration:none">✅ 待辦</a>
 </div>
 
 <div class="hero">
-  <h1>🌿 北歐冰島 10 天深度自然之旅</h1>
-  <p>9月20日（六）出發 → 9月30日（二）回台<br>2位成人 · 每人預算 NT$150,000</p>
-  <div class="badge-row">
-    <span class="badge">🌌 極光季</span>
-    <span class="badge">🧊 冰川健行</span>
-    <span class="badge">💧 瀑布群</span>
-    <span class="badge">🏖 黑沙灘</span>
+  <div style="font-size:26px;margin-bottom:6px">🇳🇴</div>
+  <h1>挪威 11天旅遊計劃</h1>
+  <p>奧斯陸・卑爾根・巨人之舌・松恩峽灣・蓋朗厄峽灣<br>2026年 9月20日 — 9月30日</p>
+</div>
+
+<div class="notice">
+  ⚠️ <strong>注意：</strong>羅弗敦群島＆特羅姆瑟需額外 3–4 天，未排入本行程。
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" onclick="showTab(0)">行程總覽</div>
+  <div class="tab" onclick="showTab(1)">每日行程</div>
+  <div class="tab" onclick="showTab(2)">住宿</div>
+  <div class="tab" onclick="showTab(3)">交通</div>
+  <div class="tab" onclick="showTab(4)">實用資訊</div>
+</div>
+
+<!-- 行程總覽 -->
+<div class="section active" id="sec0">
+  <div class="day">
+    <h3>🗺 行程亮點</h3>
+    <p>
+      🌕 中秋節 9/25 在奧達爬巨人之舌 Trolltunga（22km，需早起 05:30）<br>
+      🚂 卑爾根鐵路 Bergen Line（全球最美火車路線之一）<br>
+      🛥 松恩峽灣 Nærøyfjord UNESCO 遊船<br>
+      🏔 蓋朗厄峽灣 Geirangerfjord UNESCO + Dalsnibba 1,500m 觀景台<br>
+      🌟 9天可輕鬆遊覽，含上下景點及 2 處 UNESCO 世界遺產
+    </p>
+  </div>
+  <div class="day">
+    <h3>📍 路線概覽</h3>
+    <p>
+      ✈ <strong>9/20</strong> — 抵達奧斯陸<br>
+      🏙 <strong>9/21</strong> — 奧斯陸市區（雕刻公園、Karl Johans Gate）<br>
+      🚂 <strong>9/22</strong> — 奧斯陸 → 卑爾根（Bergen Line 火車 7h）<br>
+      🏙 <strong>9/23</strong> — 卑爾根（布里根 UNESCO、Fløibanen 纜車）<br>
+      🚌 <strong>9/24</strong> — 卑爾根 → 奧達 Odda（準備爬山）<br>
+      🌿 <strong style="color:#1b5e20">9/25 🌕 中秋節</strong> — 巨人之舌 Trolltunga 全日健行<br>
+      ⛵ <strong>9/26</strong> — 奧達 → 弗拉姆（Hardangerfjord 渡輪）<br>
+      🚂 <strong>9/27</strong> — 弗拉姆鐵路 + 松恩峽灣 Nærøyfjord UNESCO<br>
+      🚗 <strong>9/28</strong> — 弗拉姆 → 蓋朗厄峽灣（Snow Road）<br>
+      ⛵ <strong>9/29</strong> — 蓋朗厄峽灣遊船 + Dalsnibba<br>
+      ✈ <strong>9/30</strong> — 奧勒松 → 奧斯陸 → 台北
+    </p>
   </div>
 </div>
 
-<div class="leave-box">
-  <strong>📅 只需請 4 天假</strong>
-  <span>請假：9/21（一）、9/22（二）、9/23（三）、9/24（四）<br>
-  9/20、9/27、9/28 週末 + 9/25 中秋節 = 7天免扣假</span>
-</div>
+<!-- 每日行程 -->
+<div class="section" id="sec1">
 
-<nav class="tabs" id="tabs">
-  <div class="tab active" onclick="switchTab('itinerary', this)">行程</div>
-  <div class="tab" onclick="switchTab('hotels', this)">住宿</div>
-  <div class="tab" onclick="switchTab('budget', this)">預算</div>
-  <div class="tab" onclick="switchTab('aurora', this)">極光</div>
-  <div class="tab" onclick="switchTab('tips', this)">準備</div>
-</nav>
+  <div class="sec-title">Day 1–2｜奧斯陸</div>
+  <div class="day">
+    <span class="tag city">城市</span><span class="tag travel">抵達</span>
+    <h3>✈ 9/20 抵達奧斯陸</h3>
+    <p>奧斯陸 Gardermoen 機場抵達，搭 Flytog 機場快線（20分鐘）進市區 Oslo S 中央車站。Check in，晚上逛 Aker Brygge 碼頭商圈，感受挪威物價和城市氛圍。</p>
+  </div>
+  <div class="day">
+    <span class="tag city">城市</span>
+    <h3>🏙 9/21 奧斯陸探索一天</h3>
+    <p>早上 Vigeland 雕刻公園（免費，200 座銅像），下午 Karl Johans Gate 步行街，走到奧斯陸王宮。晚上 Mathallen 室內美食市集，嘗試挪威在地食材。</p>
+  </div>
 
-<!-- 行程 -->
-<div class="section active" id="itinerary">
+  <div class="sec-title">Day 3–4｜卑爾根</div>
+  <div class="day">
+    <span class="tag travel">搭火車</span>
+    <h3>🚂 9/22 奧斯陸 → 卑爾根（Bergen Line）</h3>
+    <p>搭 <strong>Bergen Line 火車</strong>，車程 7 小時，途經 Hardangervidden 高原、Flåm、Myrdal，是全球最美的鐵路之一。下午抵達卑爾根 check in，晚上逛 Bryggen 布里根木屋區（UNESCO 世界遺產），感受 14 世紀漢薩同盟商業氛圍。</p>
+  </div>
+  <div class="day">
+    <span class="tag city">城市</span>
+    <h3>🏙 9/23 卑爾根深度遊</h3>
+    <p>早上 Torget 魚市場（海鮮、螃蟹、魚湯），參觀 Bryggen Hanseatic Museum。下午搭 <strong>Fløibanen 纜車</strong>上 Fløyen（320m），俯瞰卑爾根全城。晚上可去 Nordnes 半島散步。</p>
+  </div>
 
-  <div class="day-card">
-    <div class="day-meta">
-      <span class="day-tag">Day 1 · 9/20 週六</span>
+  <div class="sec-title">Day 5–6｜奧達 &amp; 巨人之舌</div>
+  <div class="day">
+    <span class="tag travel">移動日</span>
+    <h3>🚌 9/24 卑爾根 → 奧達 Odda（準備爬山）</h3>
+    <p>搭 <strong>Skyss 巴士</strong>（路程約 3.5 小時），途經 Hardangerfjord 蘋果花果園海岸線。抵達奧達後早點休息，把隔天 Trolltunga 需要的裝備整理好、確認天氣預報、預定早上 P2 停車場、設定明天 05:30 鬧鐘。</p>
+    <div class="warn">
+      ⚠️ <strong>Trolltunga 前一晚注意：</strong>確認天氣晴天再出發，雨天路況危險。準備 2L 水、行動糧、登山杖、防寒衣物。預訂 yr.no 天氣查詢。
     </div>
-    <h3>台北 → 雷克雅維克出發</h3>
-    <p>桃園機場搭機，建議國泰航空或中國東方航空（經香港/上海轉機）。飛行約 17–20 小時，深夜抵達冰島 KEF 機場。</p>
-    <div class="spots">
-      <span class="spot">桃園 TPE 出發</span>
-      <span class="spot">KEF 機場入住</span>
+  </div>
+  <div class="day moon">
+    <span class="tag troll">巨人之舌</span><span class="tag moon">🌕 中秋節</span>
+    <h3>🪨 9/25 Trolltunga 巨人之舌全日健行</h3>
+    <p><strong>05:30</strong> 出發，<strong>06:30</strong> 抵達 P2 停車場啟程（P2 出發單程約 11km，全程 22km）。<strong>07:00</strong> 開始健行，全程約 8–10 小時。途中景色震撼，包括 Ringedalsvatnet 湖畔壯觀景致。抵達舌尖後拍照留念，享受中秋節最特別的月夜（下山後若天氣好可嘗試看月）。</p>
+    <div class="warn">
+      ⚠️ <strong>重要提示：</strong>全程 22km，爬升 700m，需 8–10 小時。請穿登山鞋（非運動鞋），帶足食物水。P2 停車 NOK 350/次，P2 出發路段需繳費，提早計劃。天氣風速 &gt;15m/s 或雨天不建議出發。攜帶急救包、備用衣物。
     </div>
   </div>
 
-  <div class="day-card">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Reykjav%C3%ADk_%283841483984%29.jpg/960px-Reykjav%C3%ADk_%283841483984%29.jpg" alt="雷克雅維克" loading="lazy">
-    <div class="day-meta">
-      <span class="day-tag">Day 2 · 9/21 週一</span>
-    </div>
-    <h3>抵達 + 雷克雅維克市區</h3>
-    <p>調整時差，下午遊覽市區。哈爾格林姆斯教堂、彩色港口街景，晚上品嚐冰島傳統料理（烤羊肉、龍蝦湯）。</p>
-    <div class="spots">
-      <span class="spot">哈爾格林姆斯教堂</span>
-      <span class="spot">港口彩色街景</span>
-    </div>
+  <div class="sec-title">Day 7–8｜弗拉姆 &amp; 松恩峽灣</div>
+  <div class="day">
+    <span class="tag fjord">峽灣</span>
+    <h3>⛵ 9/26 奧達 → 弗拉姆（Hardangerfjord 渡輪）</h3>
+    <p>早上搭 <strong>Hardangerfjord 渡輪</strong>，途經 Utne（渡輪 20 分鐘）→ Kvanndal → Voss → <strong>弗拉姆 Flåm</strong>（約 3–4 小時）。弗拉姆是松恩峽灣最有名的小鎮。可在 Flåmsbryggja 選購紀念品，挪威最著名的啤酒廠也在附近。</p>
+  </div>
+  <div class="day">
+    <span class="tag fjord">峽灣</span>
+    <h3>🚂⛵ 9/27 弗拉姆鐵路 + 松恩峽灣遊船</h3>
+    <p>上午搭 <strong>Flåm Railway 弗拉姆鐵路</strong>，20km，落差 864m，途中在 Kjossfossen 瀑布停車 2 分鐘。下午搭 <strong>Nærøyfjord 松恩峽灣遊船</strong>（UNESCO 世界遺產），峽灣最窄處僅 250m，兩側山壁達 1,700m。在 Gudvangen 下船後搭巴士回 Flåm。</p>
   </div>
 
-  <div class="day-card">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Blue_Lagoon_Overview.JPG" alt="藍湖溫泉" loading="lazy">
-    <div class="day-meta">
-      <span class="day-tag">Day 3 · 9/22 週二</span>
-    </div>
-    <h3>藍湖地熱溫泉</h3>
-    <p>世界知名地熱溫泉，矽藻土護膚面膜體驗。下午回市區辦理租車手續。</p>
-    <div class="spots">
-      <span class="spot">Blue Lagoon ⚠️ 提早2-3月訂</span>
-    </div>
+  <div class="sec-title">Day 9–10｜蓋朗厄峽灣</div>
+  <div class="day">
+    <span class="tag travel">移動</span>
+    <h3>🚗 9/28 弗拉姆 → 蓋朗厄峽灣（Snow Road 雪地公路）</h3>
+    <p>峽灣超跑自駕路線，途經 <strong>Snow Road 雪地公路</strong>（Aurlandsfjellet，全挪威最美的山頂公路之一），停靠 <strong>Stegastein 懸空觀景台</strong>（高出 Aurlandfjord 650m 的棧道台）。中午渡船 Hellesylt 抵達蓋朗厄峽灣。</p>
+  </div>
+  <div class="day">
+    <span class="tag fjord">峽灣</span>
+    <h3>⛵🏔 9/29 蓋朗厄峽灣遊船 + Dalsnibba</h3>
+    <p>上午搭 <strong>蓋朗厄峽灣 UNESCO 遊船</strong>，2 小時，欣賞 Dei Sju Systerne 七姊妹瀑布＆ Friarfoss 教士瀑布。下午走 <strong>Ørnevegen 鷹路</strong>（11 個髮夾彎）到 Dalsnibba 觀景台（1,500m，可俯瞰整個峽灣），這是挪威最高的鋪設公路景點之一。</p>
   </div>
 
-  <div class="day-card">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Gullfoss_Waterfall_September.JPG" alt="古佛斯瀑布" loading="lazy">
-    <div class="day-meta">
-      <span class="day-tag">Day 4 · 9/23 週三</span>
-    </div>
-    <h3>黃金圈 Golden Circle</h3>
-    <p>歐亞板塊裂谷辛格韋利爾、每10分鐘噴發30米的蓋歇爾間歇泉、雙層壯觀古佛斯瀑布。全程租 4WD 自駕。</p>
-    <div class="spots">
-      <span class="spot">辛格韋利爾國家公園</span>
-      <span class="spot">蓋歇爾間歇泉</span>
-      <span class="spot">古佛斯瀑布</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/a/af/Seljalandsfoss.JPG" alt="塞里雅蘭瀑布" loading="lazy">
-      <span class="day-tag">Day 5 · 9/24 週四</span>
-    </div>
-    <h3>南岸公路 South Coast</h3>
-    <p>可穿越的塞里雅蘭瀑布、60米高斯科加瀑布，以及玄武岩柱黑沙灘（注意浪大危險，禁止背對海浪）。</p>
-    <div class="spots">
-      <span class="spot">塞里雅蘭瀑布</span>
-      <span class="spot">斯科加瀑布</span>
-      <span class="spot">維克黑沙灘</span>
-    </div>
-  </div>
-
-  <div class="day-card highlight">
-    <div class="day-meta">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/2/28/Jokulsarlon.JPG" alt="傑古沙龍冰河湖" loading="lazy">
-      <span class="day-tag">Day 6 · 9/25 週五</span>
-      <span class="day-tag moon">🌕 中秋節</span>
-    </div>
-    <h3>傑古沙龍冰河湖 + 極光守� �</h3>
-    <p>乘船深入冰河湖，鑽石海灘黑沙灘上散落晶瑩冰塊。中秋節夜晚在無光害的冰河湖畔守候極光，機率 40–60%。</p>
-    <div class="spots">
-      <span class="spot">冰河湖船遊</span>
-      <span class="spot">鑽石海灘</span>
-      <span class="spot">🌌 極光守� �</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Glacier-cave-man-iceland_%28Unsplash%29.jpg/960px-Glacier-cave-man-iceland_%28Unsplash%29.jpg" alt="瓦特納冰川" loading="lazy">
-      <span class="day-tag">Day 7 · 9/26 週六</span>
-    </div>
-    <h3>瓦特納冰川徒步</h3>
-    <p>歐洲最大冰川健行 + 冰洞探索，需報名專業導覽。下午沿一號環形公路西返，晴夜繼續追極光。</p>
-    <div class="spots">
-      <span class="spot">Vatnajökull 冰川健行</span>
-      <span class="spot">冰洞探索</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Eyjafjallaj%C3%B6kull.jpeg/960px-Eyjafjallaj%C3%B6kull.jpeg" alt="埃亞菲亞德拉火山" loading="lazy">
-      <span class="day-tag">Day 8 · 9/27 週日</span>
-    </div>
-    <h3>埃亞菲亞德拉火山 + 西返</h3>
-    <p>2010年爆發導致歐洲航班大癱瘓的火山，米達爾冰川附近健行，下午往雷克雅維克方向西返。</p>
-    <div class="spots">
-      <span class="spot">Eyjafjallajökull 火山</span>
-      <span class="spot">米達爾冰川</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-    <img class="day-photo" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Kirkjufell%2C_Iceland%2C_20240714_1631_0710.jpg" alt="柯爾科夫山" loading="lazy">
-      <span class="day-tag">Day 9 · 9/28 週日</span>
-    </div>
-    <h3>斯奈山半島 Snæfellsnes</h3>
-    <p>凡爾納《地心遊記》傳說入口斯奈山冰川、《冰與火之歌》取景地柯爾科夫山。晚上在無光害半島守候極光。</p>
-    <div class="spots">
-      <span class="spot">斯奈山冰川</span>
-      <span class="spot">柯爾科夫山</span>
-      <span class="spot">🌌 極光守� �</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-      <span class="day-tag">Day 10 · 9/29 週一</span>
-    </div>
-    <h3>雷克雅維克購物</h3>
-    <p>Laugavegur 購物街採購冰島羊毛毯、火山鹽、設計品。下午參觀港口與美術館，晚上精選冰島餐廳。</p>
-    <div class="spots">
-      <span class="spot">Laugavegur 購物街</span>
-      <span class="spot">Grillið 餐廳</span>
-    </div>
-  </div>
-
-  <div class="day-card">
-    <div class="day-meta">
-      <span class="day-tag">Day 11 · 9/30 週二</span>
-    </div>
-    <h3>返台</h3>
-    <p>清晨前往凱夫拉維克機場（KEF），搭機返台，預計 10/1 抵達台北桃園機場。</p>
-    <div class="spots">
-      <span class="spot">KEF → TPE</span>
-    </div>
+  <div class="sec-title">Day 11｜回程</div>
+  <div class="day">
+    <span class="tag travel">回程</span>
+    <h3>✈ 9/30 蓋朗厄峽灣 → 奧勒松 → 奧斯陸 → 台北</h3>
+    <p>上午搭船/驅車到 <strong>Ålesund 奧勒松機場</strong>（1.5 小時），或 Molde 機場轉飛奧斯陸 Gardermoen，轉機返回台北。機場可逛 Duty Free（挪威巧克力、肉桂捲、海鮮罐頭、Aquavit 烈酒）。</p>
   </div>
 
 </div>
 
 <!-- 住宿 -->
-<div class="section" id="hotels">
-
-  <div class="route-banner">
-    <div class="route-banner-icon">🗺️</div>
-    <div>
-      <p><strong>整體路線邏輯</strong>雷克雅維克 → 藍湖 → 黃金圈 → 南岸 → 東部冰河 → 折返 → 斯奈山半島 → 返雷克雅維克</p>
-    </div>
+<div class="section" id="sec2">
+  <div class="sec-title">奧斯陸（2晚）</div>
+  <div class="hotel">
+    <h4>Clarion Hotel The Hub Oslo</h4>
+    <p>🏙 Oslo S 中央車站附近 · 2晚（9/20–9/22）<br>交通最便利，可步行到市區所有景點，距離車站 20 分鐘內。</p>
   </div>
 
-  <div class="warning-card">
-    <strong>⚠️ Day 8 路線提醒</strong>
-    Day 8（9/27）從 Höfn 往西開，途經 Eyjafjallajökull，全程約 3.5 小時。建議當晚住 <strong>Hvolsvöllur</strong>，隔天再開 2.5 小時去斯奈山，兩天都不趕。
+  <div class="sec-title">卑爾根（2晚）</div>
+  <div class="hotel">
+    <h4>Hotel Rosenkrantz Bergen</h4>
+    <p>🏙 Bryggen 布里根區 · 2晚（9/22–9/24）<br>位在卑爾根歷史木屋區附近，步行到 Fløibanen 纜車站約 5 分鐘。</p>
   </div>
 
-  <!-- 訂房優先順序 -->
-  <div class="booking-priority">
-    <div class="booking-priority-title">🔥 訂房優先順序（越快越好）</div>
-    <div class="priority-row">
-      <div class="priority-num">1</div>
-      <div class="priority-info">
-        <strong>Vík í Mýrdal（9/24）</strong>
-        <span>全冰島最難訂，房間極少，旺季秒殺</span>
-      </div>
-    </div>
-    <div class="priority-row">
-      <div class="priority-num p2">2</div>
-      <div class="priority-info">
-        <strong>Höfn 附近（9/25–26）</strong>
-        <span>中秋節 2 晚 + 極光季，選擇少且搶手</span>
-      </div>
-    </div>
-    <div class="priority-row">
-      <div class="priority-num p3">3</div>
-      <div class="priority-info">
-        <strong>Grundarfjörður（9/28）</strong>
-        <span>Kirkjufell 旁小鎮，旅館數量有限</span>
-      </div>
-    </div>
+  <div class="sec-title">奧達（2晚）</div>
+  <div class="hotel">
+    <h4>Hardanger Hotel / Trolltunga Hotel</h4>
+    <p>🪨 Odda 奧達 · 2晚（9/24–9/26）<br>奧達市鎮中心，距 Trolltunga P2 停車場約 10 分鐘車程。爬完山隔天 可提供早早休息。</p>
   </div>
 
-  <!-- Night 1-3 Reykjavík -->
-  <div class="hotel-card">
-    <div class="hotel-nights">🏨 住 3 晚</div>
-    <h3>雷克雅維克（Reykjavík）</h3>
-    <div class="days-tag">Night 1–3 · 9/20（六）– 9/22（二）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>推薦區域：101 Reykjavík 市中心</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=101+Reykjavik+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        Laugavegur 購物街步行可達 · 餐廳酒吧多 · 交通方便
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Hótel Borg · Canopy by Hilton · Fosshotel Reykjavík · CenterHotel Þingholt
-      </div>
-    </div>
-    <div class="hotel-note">💡 Blue Lagoon 距市區僅 45 分鐘，Day 3 不需另外住，直接當日來回即可</div>
+  <div class="sec-title">弗拉姆（2晚）</div>
+  <div class="hotel">
+    <h4>Fretheim Hotel Flåm</h4>
+    <p>⛵ Flåm 弗拉姆村內 · 2晚（9/26–9/28）<br>弗拉姆最有名的百年老飯店（建於 1866 年），就在峽灣村旁，可步行到弗拉姆鐵路站和 Nærøyfjord 遊船碼頭。</p>
   </div>
 
-  <div class="drive-strip">🚗 黃金圈後南下 · 約 1.5 hr</div>
-
-  <!-- Night 4 Selfoss -->
-  <div class="hotel-card mid">
-    <div class="hotel-nights mid">🏨 住 1 晚</div>
-    <h3>塞爾福斯（Selfoss）</h3>
-    <div class="days-tag">Night 4 · 9/23（三）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>黃金圈後轉往南岸的中繼點</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Selfoss+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        距 Gullfoss 約 60km · 隔天前往南岸瀑布很順路
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Hotel Selfoss · Guesthouse Selfoss · Ion Adventure Hotel（溫泉景觀房，較貴但值得）
-      </div>
-    </div>
+  <div class="sec-title">蓋朗厄峽灣（2晚）</div>
+  <div class="hotel">
+    <h4>Union Hotel Geirangerfjord</h4>
+    <p>🏔 Geirangerfjord · 2晚（9/28–9/30）<br>蓋朗厄峽灣最知名的老牌飯店，擁有無敵峽灣景觀，有游泳池、餐廳。旁邊就是最美的峽灣觀景點之一。</p>
   </div>
-
-  <div class="drive-strip">🚗 往東南海岸 · 約 1 hr</div>
-
-  <!-- Night 5 Vík -->
-  <div class="hotel-card hot">
-    <div class="hotel-nights hot">🔥 住 1 晚（最難訂！）</div>
-    <h3>維克（Vík í Mýrdal）</h3>
-    <div class="days-tag">Night 5 · 9/24（四）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>南岸最重要據點，黑沙灘就在旁邊</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Vik+i+Myrdal+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        距 Seljalandsfoss 約 35km · 距 Jökulsárlón 約 200km
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Hótel Kría · The Barn · Guesthouse Carina · Icelandair Hotel Vík
-      </div>
-    </div>
-    <div class="priority-badge">🚨 最優先訂！旺季經常全滿</div>
-  </div>
-
-  <div class="drive-strip">🚗 沿 1 號公路往東 · 約 2.5 hr</div>
-
-  <!-- Night 6-7 Höfn -->
-  <div class="hotel-card moon-card">
-    <div class="hotel-nights moon-n">🌕 住 2 晚（中秋節）</div>
-    <h3>霍芬（Höfn）/ 傑古沙龍附近</h3>
-    <div class="days-tag">Night 6₃7 · 9/25（五）中秋節 – 9/26（六）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>極光觀測最佳區域 🌌</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Jokulsarlon+Glacier+Lagoon+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        Jökulsárlón 冰河湖旁 · 零光害 · 冰川洞 tour 在此集合 · 中秋月圓夜在湖畔賞月追極光
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Fosshotel Glacier Lagoon（冰河湖旁，景觀絕佳）· Jökulsárlón Guesthouse · Hótel Höfn · Glacier World
-      </div>
-    </div>
-    <div class="hotel-note">💡 Höfn 市區離 Jökulsárlón 約 80km，若預算允許建議住冰河湖旁，夜晚步行即可追光</div>
-    <div class="priority-badge">🚨 2 晚需同時訂好，中秋旺季早早賣完</div>
-  </div>
-
-  <div class="drive-strip">🚗 往西折返 · 途經 Eyjafjallajökull · 約 3.5 hr</div>
-
-  <!-- Night 8 Hvolsvöllur -->
-  <div class="hotel-card mid">
-    <div class="hotel-nights mid">🏨 住 1 晚</div>
-    <h3>霍夫索爾（Hvolsvöllur）</h3>
-    <div class="days-tag">Night 8 · 9/27（日）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>西返中繼站，避免兩段長途同天開</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Hvolsvollur+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        距 Eyjafjallajökull 約 40km · 距 Snæfellsnes 隔天約 2.5 hr
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Hotel Skálakot · Guesthouse Hvolsvöllur · Hvolsvöllur Hotel · Rauðamelur Guesthouse
-      </div>
-    </div>
-  </div>
-
-  <div class="drive-strip">🚗 經雷克雅維克往西北 · 約 2.5 hr</div>
-
-  <!-- Night 9 Snæfellsnes -->
-  <div class="hotel-card">
-    <div class="hotel-nights">🏨 住 1 晚</div>
-    <h3>格倫達峽灣（Grundarfjörður）</h3>
-    <div class="days-tag">Night 9 · 9/28（一）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>Kirkjufell 教會山就在旁邊</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Grundarfjordur+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        步行即可抵達拍攝點 · 清晨日出是最美的時刻
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        Grundarfjörður Hostel &amp; Guesthouse · Kirkjufell Guesthouse · 或往北 20km 選 Stykkishólmur Inn
-      </div>
-    </div>
-    <div class="hotel-note">💡 Snæfellsnes 住宿選擇少，也可住 Stykkishólmur（小鎮感更好），但距 Kirkjufell 多 20 分鐘車程</div>
-    <div class="priority-badge">⚡ 第三優先訂</div>
-  </div>
-
-  <div class="drive-strip">🚗 回雷克雅維克 · 約 2 hr</div>
-
-  <!-- Night 10 Reykjavík -->
-  <div class="hotel-card">
-    <div class="hotel-nights">🏨 住 1 晚</div>
-    <h3>雷克雅維克 或 凱夫拉維克</h3>
-    <div class="days-tag">Night 10 · 9/29（二）</div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">📍</span>
-      <div class="hotel-area-text">
-        <strong>最後一夜 · 視班機時間決定</strong>
-        <a href="https://www.google.com/maps/search/?api=1&query=Keflavik+Airport+Iceland" target="_blank" class="map-link">🗺️ Google 地圖</a>
-        KEF 機場距市區 45 分鐘
-      </div>
-    </div>
-    <div class="hotel-area-row">
-      <span class="hotel-area-icon">🏨</span>
-      <div class="hotel-area-text">
-        若班機早於 09:00：住 Keflavík 市區（Airport Hotel Keflavík · Alex Guesthouse）<br>
-        若班機晚於 10:00：住雷克雅維克市中心即可
-      </div>
-    </div>
-  </div>
-
-  <!-- 總覽 -->
-  <div class="info-card" style="margin-top:6px">
-    <div class="info-row">
-      <span class="info-label">住宿總計</span>
-      <span class="info-val">10 晚（雷克雅維克 4 晚 + 外宿 6 晚）</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">建議平台</span>
-      <span class="info-val">Booking.com · Hotels.com · 各旅館官網（部分直訂較便宜）</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">訂房時機</span>
-      <span class="info-val">現在起 3 個月前完成，Vík 和 Höfn 越快越好</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">退訂政策</span>
-      <span class="info-val">建議選可免費取消房型，機票確認後再鎖定不可退款的優惠價</span>
-    </div>
-  </div>
-
 </div>
 
-<!-- 預算 -->
-<div class="section" id="budget">
-  <p class="section-title">預算明細（每人估算）</p>
-  <div class="budget-card">
-    <div class="budget-row">
-      <span class="budget-label">✈️ 機票（來回）</span>
-      <span>NT$45,000 – 55,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">🏨 住宿（10晚）</span>
-      <span>NT$22,000 – 30,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">🚗 租車 4WD（8天均攤）</span>
-      <span>NT$15,000 – 20,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">⛽ 油資</span>
-      <span>NT$3,000 – 4,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">🍽️ 餐飲</span>
-      <span>NT$12,000 – 16,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">🎟️ 活動門票</span>
-      <span>NT$8,000 – 12,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">🛍️ 購物雜費</span>
-      <span>NT$5,000 – 10,000</span>
-    </div>
-    <div class="budget-row">
-      <span class="budget-label">合計</span>
-      <span class="budget-total">NT$110,000 – 147,000</span>
-    </div>
+<!-- 交通 -->
+<div class="section" id="sec3">
+  <div class="tip">
+    <h4>✈ 台北 → 奧斯陸</h4>
+    <ul>
+      <li>轉機建議：中轉 1–2 次，常見航線約 16–20 小時</li>
+      <li>推薦：EVA Air + Finnair（赫爾辛基轉）、Cathay Pacific</li>
+      <li>建議提早 3 個月訂票，旺季 NOK 18,000–35,000</li>
+    </ul>
   </div>
   <div class="tip">
-    💡 省錢技巧：Bonus 超市購買早午餐食材自煮，可省下大量餐費。冰島餐廳消費高，建議僅晚餐外食。
+    <h4>🚂 奧斯陸 → 卑爾根（Bergen Line）</h4>
+    <ul>
+      <li>Oslo S → Bergen 車站，全程 7 小時，票價 NOK 799 起</li>
+      <li>最美段：Myrdal → Finse 高原雪景（即使 9 月仍可能有殘雪）</li>
+      <li>提早在 VY（挪威鐵路）官網訂票，最早車班 08:25</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>⛵ 卑爾根 → 奧達（Hardangerfjord 渡輪）</h4>
+    <ul>
+      <li>Bergen 巴士站 → Odda，Skyss 巴士 940，路程 3.5 小時</li>
+      <li>途經 Hardangerfjord，景色絕美，建議不要開車，欣賞風景</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚂 Flåm Railway 弗拉姆鐵路</h4>
+    <ul>
+      <li>Flåm ↕ Myrdal，單程 2 小時，票價 NOK 430</li>
+      <li>世界最陡峭的鐵路之一，途中在 Kjossfossen 瀑布（高 93m）停留 10 分鐘</li>
+      <li>超早訂票可在 Flåm Railway 官網購票最便宜</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>⛵ Nærøyfjord 松恩峽灣遊船</h4>
+    <ul>
+      <li>Flåm → Gudvangen，2 小時，票價 NOK 450/人</li>
+      <li>可以用 Norway in a Nutshell 或 Fjords 套票購買（9 種以上不同套票），提早訂</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🚗 弗拉姆 → 蓋朗厄峽灣（Snow Road）</h4>
+    <ul>
+      <li>Flåm → Snow Road → Geirangerfjord，全程 4–5 小時含停留</li>
+      <li>途中建議停靠 Stegastein 懸空平台、Aurlandsfjellet 山頂公路（最高達 1,243m）</li>
+      <li>中途在 Hellesylt 渡輪到 Geirangerfjord（40 分鐘，票價 NOK 220）</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>✈ 蓋朗厄峽灣 → 奧斯陸 → 台北（回程）</h4>
+    <ul>
+      <li>最近機場：Ålesund Airport（AES），距離 1.5 小時車程</li>
+      <li>Norwegian 或 SAS 飛奧斯陸 Gardermoen，票價 NOK 400–800</li>
+      <li>或可先到 Molde 機場（1 小時車程）班次更多</li>
+    </ul>
   </div>
 </div>
 
-<!-- 極光 -->
-<div class="section" id="aurora">
-  <img class="aurora-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/039_Northern_lights_over_M%C3%BDvatn_%28Iceland%29_Photo_by_Giles_Laurent.jpg/960px-039_Northern_lights_over_M%C3%BDvatn_%28Iceland%29_Photo_by_Giles_Laurent.jpg" alt="冰島極光" loading="lazy">
-  <p class="section-title">極光觀賞指南</p>
-  <p class="section-desc">9月底正式進入極光季，加上2026年恰逢太陽活動高峰周期，這趟旅行看到極光的機率相當不錯！</p>
-  <div class="info-card">
-    <div class="info-row">
-      <span class="info-label">最佳時段</span>
-      <span class="info-val">晚上 10pm – 凌晨 2am</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">9月底機率</span>
-      <span class="info-val">晴夜約 40–60%（已入極光季）</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">2026年特別</span>
-      <span class="info-val">太陽活動週期高峰期，爆發機率更高於平均年份</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">最佳地點</span>
-      <span class="info-val">傑古沙龍冰河湖（Day :）、斯奈山半島（Day 9）、維克黑沙灘（Day 5）</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">推薦 App</span>
-      <span class="info-val">Veður（冰島氣象局）、My Aurora Forecast</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">注意事項</span>
-      <span class="info-val">需無雲晴夜 + 遠離光污染，極光強度指數 KP ≥ 3 即可蚋</span>
-    </div>
+<!-- 實用資訊 -->
+<div class="section" id="sec4">
+  <div class="tip">
+    <h4>💰 挪威消費參考</h4>
+    <ul>
+      <li>餐廳主食：NOK 180–350（約 NT$500–1,000）</li>
+      <li>城市交通：NOK 60–100（約 NT$170–280）</li>
+      <li>景點門票：NOK 50–80（約 NT$140–220）</li>
+      <li>超市自煮：NOK 20–23/餐</li>
+      <li>挪威是全球最貴旅遊國家之一，建議多預備 Kiwi、Rema 1000 超市採買</li>
+    </ul>
   </div>
-  <div class="tip" style="background:#faeeda;color:#633806">
-    🌕 特別亮點：Day 6（9/25）中秋節當晚在傑古沙龍冰河湖畔，月光與極光共存，是難忘的中秋夜。
+  <div class="tip">
+    <h4>🌡 9月氣候</h4>
+    <ul>
+      <li>平均氣溫：8–14°C，早晚溫差大</li>
+      <li>峽灣區天氣多變，隨時可能下雨或起霧</li>
+      <li>Trolltunga 健行天氣不可預知（雨天/風速不可出發）</li>
+      <li>季節：9 月底開始最早可能有初雪，峽灣秋色橙紅很美</li>
+      <li>蓋朗厄峽灣冬季道路可能封閉，9 月底可能提前關閉</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🪨 Trolltunga 注意事項</h4>
+    <ul>
+      <li>全程 22km，爬升 900m，需時 8–10 小時</li>
+      <li>天氣不好建議不要貿然出發 07:00（確認出發前有再確認天氣）</li>
+      <li>9 月底秋天高原可能已有初雪或積雪，提早了解路況</li>
+      <li>攜帶急救包，岩壁危險注意安全</li>
+      <li>P2 停車收費 NOK 350/次，P2 出發後下一停車場路段再收費，提早計劃分配時間</li>
+      <li>提早天氣不好（雨量 &gt;15m/s、icy 路段），P2 不建議出發</li>
+      <li>攜帶急救包，拍照小心，危險！</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🌌 天氣預報 App（9 月北歐）</h4>
+    <ul>
+      <li>9 月北歐夜晚極光觀測機率已開始，可用 SpaceWeatherLive、My Aurora Forecast</li>
+      <li>卑爾根和蓋朗厄峽灣冬季是最容易看到極光的南部地點</li>
+      <li>App：SpaceWeatherLive；My Aurora Forecast；Kp Index ≥ 3 才建議去</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>📱 推薦 App &amp; 資訊</h4>
+    <ul>
+      <li><strong>Ruter/Entur</strong>：挪威全國交通查詢</li>
+      <li><strong>Vy</strong>：全國火車購票（Bergen Line）</li>
+      <li><strong>yr.no</strong>：全國最準確天氣 App（免費）</li>
+      <li><strong>Google Translate</strong>：全國通用語言</li>
+      <li>挪威通用英文，約 95% 挪威人英文流利</li>
+      <li>緊急電話：110（火警）/ 113（救護）/ 112（警察）</li>
+      <li>小費：挪威旅遊景點幾乎沒有強制小費文化</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🛂 簽證 &amp; 入境</h4>
+    <ul>
+      <li>挪威通用免簽 / 申根簽證區，台灣護照免簽最多 90 天</li>
+      <li>購買旅遊保險（必要），含罷工、醫療急救、行李遺失</li>
+      <li>P2 不建議出發時可聯絡緊急救援隊，出行前確認旅遊保險是否覆蓋</li>
+      <li>2025 歐洲全面推行 ETIAS，預計費用 €7，提前 3 天申請</li>
+    </ul>
+  </div>
+  <div class="tip">
+    <h4>🍽 美食推薦</h4>
+    <ul>
+      <li>挪威國民料理 / 超市點心：Brunost 棕色起司、Kvikk Lunsj 巧克力威化</li>
+      <li>Freia 超市巧克力（挪威在地品牌，超值）</li>
+      <li>Aquavit 烈酒（挪威特產）</li>
+      <li>Viking 北歐風味海鮮：鱈魚、鮭魚、蝦（各大超市、Rema 1000）</li>
+      <li>挪威的外帶熱食在超市有最划算點餐：夜宵魚餅、派皮點心、熱狗</li>
+    </ul>
   </div>
 </div>
-
-<!-- 準備 -->
-<div class="section" id="tips">
-  <p class="section-title">🧥 9月底穿衣指南</p>
-  <div class="info-card" style="margin-bottom:16px">
-    <div class="tip-row">
-      <span class="tip-icon">🌡️</span>
-      <span class="tip-text">日間 5–12°C，夜間 0–5°C，冰島風大體感更冷</span>
-    </div>
-    <div class="tip-row">
-      <span class="tip-icon">🧥</span>
-      <span class="tip-text">防風防水外套（Gore-Tex）、羊毛中層保暖、輕量羽絨備用</span>
-    </div>
-    <div class="tip-row">
-      <span class="tip-icon">🧤</span>
-      <span class="tip-text">保暖帽、手套、脖圍必備，晚上守候極光會非常冷</span>
-    </div>
-    <div class="tip-row">
-      <span class="tip-icon">🌧️</span>
-      <span class="tip-text">冰島天氣一日四季袸化快，隨時備薄雨衣（可收納進包包）</span>
-    </div>
-    <div class="tip-row">
-      <span class="tip-icon">👟</span>
-      <span class="tip-text">防水登山鞋為主，冰川活動現場另租冰爪</span>
-    </div>
-  </div>
-
-  <p class="section-title">✅ 出發前準備清單</p>
-  <div class="info-card">
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>提前 6 個月訂機票（建議 2026年3月前搞定）</span>
-    </div>
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>提前 2–3 個月訂藍湖溫泉（極易售罄）</span>
-    </div>
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>提前 1 個月訂冰川健行導覽</span>
-    </div>
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>確認台灣護照有效期（申根免簽，90天內）</span>
-    </div>
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>購買旅遊保險（含緊急醫療撤離）</span>
-    </div>
-    <div class="check-item" onclick="this.classList.toggle('done')">
-      <div class="check-box"></div>
-      <span>下載冰島離線地圖（maps.me 或 Google Maps）</span>
-      </div>
-  </div>
-
-</div>
-
-<footer>
-  <p>🌿 旅程愉快！祝追到極光 🌌</p>
-</footer>
 
 <script>
-function switchTab(id, el) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  el.classList.add('active');
+function showTab(idx) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.section').forEach((s,i) => s.classList.toggle('active', i===idx));
+  document.getElementById('tabs').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 </script>
 </body>
