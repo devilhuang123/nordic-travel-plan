@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏨 挪威住宿總覽</title>
+<style>
+:root{--bg:#0d1b2a;--surface:#111f30;--card:#142038;--border:#1e3a50;--accent:#5bc8f5;--green:#3dba7e;--orange:#f5a742;--red:#e05555;--teal:#2fb8ac;--purple:#7c5cbf;--text:#e8edf2;--muted:#7a9ab0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.topnav{background:#1a1a18;padding:10px 16px;text-align:center;font-size:13px}
+.topnav a{color:#aaa;margin:0 10px;text-decoration:none;transition:color .2s}
+.topnav a:hover{color:#fff}
+.hero{background:linear-gradient(160deg,#3a1f52 0%,#5e2a6e 55%,#7c5cbf 100%);padding:44px 20px 32px;text-align:center}
+.hero h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:8px}
+.hero p{color:#e0d4f0;font-size:.92rem;max-width:640px;margin:0 auto 4px}
+.hero .note{font-size:.8rem;color:#f5c87a;margin-top:10px;background:rgba(245,200,122,.08);border:1px solid rgba(245,200,122,.2);border-radius:8px;padding:8px 14px;display:inline-block}
+.container{max-width:900px;margin:0 auto;padding:28px 16px 64px}
+.table-wrap{overflow-x:auto;margin-bottom:26px;border-radius:14px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:#0f2540;color:var(--accent);font-weight:700;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid rgba(30,58,80,.4);vertical-align:top;line-height:1.5;color:var(--muted)}
+td:first-child{color:var(--text);font-weight:600}
+tr:last-child td{border-bottom:0}
+tr:hover td{background:rgba(255,255,255,.02)}
+.hotel-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:18px;overflow:hidden}
+.hotel-head{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hotel-num{background:var(--purple);color:#fff;font-weight:700;font-size:.72rem;padding:3px 10px;border-radius:7px;white-space:nowrap;flex-shrink:0}
+.hotel-name{font-size:1.02rem;font-weight:700}
+.hotel-meta{color:var(--muted);font-size:.82rem;margin-top:2px}
+.nights{margin-left:auto;background:rgba(91,200,245,.12);color:var(--accent);border:1px solid rgba(91,200,245,.2);font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.hotel-body{padding:14px 20px}
+.hotel-body p{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:6px}
+.hotel-body p:last-child{margin-bottom:0}
+.hotel-body strong{color:var(--text)}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:10px;margin:2px 0;font-weight:600}
+.tag.star{background:rgba(245,200,122,.12);color:#f5c87a;border:1px solid rgba(245,200,122,.2)}
+.tag.tip{background:rgba(61,186,126,.12);color:#6dd8a3;border:1px solid rgba(61,186,126,.2)}
+.tag.warn{background:rgba(245,167,66,.15);color:#f5c87a;border:1px solid rgba(245,167,66,.25)}
+.reminders{background:var(--surface);border:1px solid rgba(124,92,191,.3);border-radius:12px;padding:18px 20px;margin-top:8px}
+.reminders h3{font-size:.9rem;color:#a08be0;margin-bottom:12px}
+.rem-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:.84rem}
+.rem-item:last-child{margin-bottom:0}
+.rem-icon{flex-shrink:0;font-size:1rem;margin-top:1px}
+.rem-body{color:var(--muted);line-height:1.6}
+.rem-body strong{color:var(--text)}
+.footer{text-align:center;font-size:.78rem;color:#4a6878;margin-top:36px;padding-top:18px;border-top:1px solid #1a2a38}
+.footer a{color:var(--accent);text-decoration:none}
+@media(max-width:600px){.hotel-body{padding:12px 14px}th,td{padding:8px 10px}}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="index.html">📋 行程細節</a>
+  <a href="hotels.html"><strong style="color:#fff">🏨 住宿</strong></a>
+  <a href="transport.html">🚗 交通</a>
+  <a href="norway-todo.html">✅ 待辦</a>
+</div>
+
+<div class="hero">
+  <h1>🏨 挪威住宿總覽</h1>
+  <p>9 晚・7 間飯店｜Oslo → Flåm → Bergen → Odda → Loen → Geiranger → Ålesund</p>
+  <p>9/19 入住 → 9/28 退房｜2 位成人</p>
+  <div class="note">⚠ 房價、可訂房況出發前以各飯店／訂房平台再次確認</div>
+</div>
+
+<div class="container">
+
+<!-- Summary Table -->
+<div class="table-wrap">
+  <table>
+    <tr><th>日期</th><th>城市</th><th>飯店</th><th>晚數</th></tr>
+    <tr><td>9/19–9/20</td><td>Oslo</td><td>Clarion Hotel The Hub</td><td>1 晚</td></tr>
+    <tr><td>9/20–9/21</td><td>Flåm</td><td>Fretheim Hotel</td><td>1 晚</td></tr>
+    <tr><td>9/21–9/23</td><td>Bergen</td><td>Thon Hotel Rosenkrantz</td><td>2 晚</td></tr>
+    <tr><td>9/23–9/25</td><td>Odda</td><td>Trolltunga Hotel</td><td>2 晚</td></tr>
+    <tr><td>9/25–9/26</td><td>Loen</td><td>Hotel Alexandra</td><td>1 晚</td></tr>
+    <tr><td>9/26–9/27</td><td>Geiranger</td><td>Hotel Union Geiranger</td><td>1 晚</td></tr>
+    <tr><td>9/27–9/28</td><td>Ålesund</td><td>Hotel 1904</td><td>1 晚</td></tr>
+  </table>
+</div>
+
+<!-- 1 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 2</div>
+    <div>
+      <div class="hotel-name">Clarion Hotel The Hub</div>
+      <div class="hotel-meta">📍 Oslo｜9/19–9/20</div>
+    </div>
+    <span class="nights">1 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p><strong>Oslo S 中央車站正對面</strong>，機場快線下車步行 3–5 分。</p>
+    <p>隔天一早搭 Bergen Line（NiN 火車）最方便，免拖行李長距離移動。<span class="tag tip">交通樞紐</span></p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 3</div>
+    <div>
+      <div class="hotel-name">Fretheim Hotel</div>
+      <div class="hotel-meta">📍 Flåm｜9/20–9/21</div>
+    </div>
+    <span class="nights">1 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>Flåm 峽灣畔經典歷史飯店，緊鄰 Flåm Railway 火車站與港口。</p>
+    <p>晚餐可步行到 <strong>Ægir BrewPub</strong>（維京拼盤＋啤酒，務必訂位）。</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 4–5</div>
+    <div>
+      <div class="hotel-name">Thon Hotel Rosenkrantz Bergen</div>
+      <div class="hotel-meta">📍 Bergen｜9/21–9/23</div>
+    </div>
+    <span class="nights">2 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>位於 <strong>Bryggen 木屋區</strong>旁，步行可達魚市場、Fløibanen 纜車站。</p>
+    <p>連住 2 晚，第 2 天（9/22）可整日逛 Bergen 不必換飯店。<span class="tag tip">市中心</span></p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 6–7</div>
+    <div>
+      <div class="hotel-name">Trolltunga Hotel / Hardanger Hotel</div>
+      <div class="hotel-meta">📍 Odda｜9/23–9/25</div>
+    </div>
+    <span class="nights">2 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>Trolltunga 健行基地，連住 2 晚方便 9/24 全日登山。</p>
+    <p><span class="tag warn">⚠ 重要</span> 選含 <strong>早起餐盒（packed breakfast）</strong>方案——9/24 清晨 05:30 出發前才有得吃。</p>
+    <p>行動糧可前一天在 <strong>Kiwi／Rema 1000</strong> 超市採買。</p>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 8</div>
+    <div>
+      <div class="hotel-name">Hotel Alexandra</div>
+      <div class="hotel-meta">📍 Loen｜9/25–9/26</div>
+    </div>
+    <span class="nights">1 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>緊鄰 <strong>Loen Skylift</strong> 纜車站，有泳池 SPA、自助晚餐。<span class="tag star">⭐ 度假感</span></p>
+    <p>長途自駕後（Odda → Loen 約 4.5–5h）放鬆的好選擇。</p>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 9</div>
+    <div>
+      <div class="hotel-name">Hotel Union Geiranger</div>
+      <div class="hotel-meta">📍 Geiranger｜9/26–9/27</div>
+    </div>
+    <span class="nights">1 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>無敵 <strong>Geirangerfjord 峽灣景觀</strong>、泳池 SPA。<span class="tag star">⭐ 景觀飯店</span></p>
+    <p>建議訂峽灣面房型，早晚峽灣光線極美。</p>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="hotel-card">
+  <div class="hotel-head">
+    <div class="hotel-num">Day 10</div>
+    <div>
+      <div class="hotel-name">Hotel 1904</div>
+      <div class="hotel-meta">📍 Ålesund｜9/27–9/28</div>
+    </div>
+    <span class="nights">1 晚</span>
+  </div>
+  <div class="hotel-body">
+    <p>位於 <strong>新藝術建築區（Jugendstil）</strong>中心，步行可達碼頭與 Aksla 登山口。</p>
+    <p>飯店餐廳 <strong>Green Garden</strong> 評價極高（招牌魚湯，⚠ 週日公休）。</p>
+    <p>備選：<strong>Quality Hotel Waterfront</strong>（海濱）｜<strong>Thon Hotel Ålesund</strong>（港景）。</p>
+  </div>
+</div>
+
+<!-- Reminders -->
+<div class="reminders">
+  <h3>💡 訂房備忘</h3>
+  <div class="rem-item">
+    <div class="rem-icon">🔴</div>
+    <div class="rem-body"><strong>現在就訂</strong>：9 月底為旺季尾聲，峽灣區飯店量少易售完、會漲，7 間建議盡早一次訂齊。</div>
+  </div>
+  <div class="rem-item">
+    <div class="rem-icon">🥾</div>
+    <div class="rem-body"><strong>Odda 餐盒</strong>：Trolltunga Hotel 務必選含 packed breakfast 的方案，05:30 出發才有早餐。</div>
+  </div>
+  <div class="rem-item">
+    <div class="rem-icon">🔌</div>
+    <div class="rem-body"><strong>EV 充電</strong>：跟各飯店確認有無充電樁，過夜充最划算（9/23 起自駕段尤其重要）。</div>
+  </div>
+  <div class="rem-item">
+    <div class="rem-icon">🌊</div>
+    <div class="rem-body"><strong>景觀房</strong>：Union Geiranger、Hotel Alexandra 的峽灣／湖景房型值得加價。</div>
+  </div>
+</div>
+
+<div class="footer">
+  挪威住宿總覽｜房價與房況出發前以官方平台再次確認<br>
+  <a href="index.html">📋 回行程細節</a> ・ <a href="transport.html">🚗 交通總覽 →</a>
+</div>
+
+</div>
+</body>
+</html>

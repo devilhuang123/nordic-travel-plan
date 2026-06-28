@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🚗 挪威交通總覽</title>
+<style>
+:root{--bg:#0d1b2a;--surface:#111f30;--card:#142038;--border:#1e3a50;--accent:#5bc8f5;--green:#3dba7e;--orange:#f5a742;--red:#e05555;--teal:#2fb8ac;--purple:#7c5cbf;--text:#e8edf2;--muted:#7a9ab0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.topnav{background:#1a1a18;padding:10px 16px;text-align:center;font-size:13px}
+.topnav a{color:#aaa;margin:0 10px;text-decoration:none;transition:color .2s}
+.topnav a:hover{color:#fff}
+.hero{background:linear-gradient(160deg,#0a2e52 0%,#1a5276 55%,#1a7a5e 100%);padding:44px 20px 32px;text-align:center}
+.hero h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:8px}
+.hero p{color:#b8d4e8;font-size:.92rem;max-width:640px;margin:0 auto 4px}
+.hero .note{font-size:.8rem;color:#f5c87a;margin-top:10px;background:rgba(245,200,122,.08);border:1px solid rgba(245,200,122,.2);border-radius:8px;padding:8px 14px;display:inline-block}
+.container{max-width:900px;margin:0 auto;padding:28px 16px 64px}
+.qnav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:28px}
+.qnav a{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:18px;font-size:.78rem;text-decoration:none;transition:all .2s;white-space:nowrap}
+.qnav a:hover{border-color:var(--accent);color:var(--accent)}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:22px;overflow:hidden;scroll-margin-top:20px}
+.sec-head{padding:14px 20px 12px;border-bottom:1px solid var(--border);font-size:.95rem;font-weight:700}
+.sec-body{padding:14px 20px}
+.flight-row{display:flex;gap:12px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(30,58,80,.5)}
+.flight-row:last-of-type{border-bottom:0}
+.flight-dir{font-size:.7rem;font-weight:700;background:rgba(91,200,245,.15);color:var(--accent);border:1px solid rgba(91,200,245,.2);border-radius:6px;padding:2px 7px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.flight-dir.ret{background:rgba(124,92,191,.15);color:#a08be0;border-color:rgba(124,92,191,.25)}
+.flight-info{font-size:.84rem;flex:1}
+.flight-info strong{display:block;line-height:1.5}
+.flight-info .sub{color:var(--muted);font-size:.78rem}
+.warn-inline{font-size:.78rem;color:#f5c87a;margin-top:10px;line-height:1.6;padding:8px 12px;background:rgba(245,167,66,.07);border:1px solid rgba(245,167,66,.2);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{color:var(--accent);font-weight:700;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid rgba(30,58,80,.4);vertical-align:top;line-height:1.5;color:var(--muted)}
+td:first-child{color:var(--text);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.leg{padding:9px 0;border-bottom:1px solid rgba(30,58,80,.4)}
+.leg:last-child{border-bottom:0}
+.leg-day{font-size:.7rem;font-weight:700;color:var(--teal);letter-spacing:.04em}
+.leg p{font-size:.84rem;color:var(--muted);line-height:1.6;margin-top:2px}
+.leg strong{color:var(--text)}
+.notes p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:6px}
+.notes p:last-child{margin-bottom:0}
+.notes strong{color:var(--text)}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:10px;margin:2px 0;font-weight:600}
+.tag.warn{background:rgba(245,167,66,.15);color:#f5c87a;border:1px solid rgba(245,167,66,.25)}
+.tag.tip{background:rgba(61,186,126,.12);color:#6dd8a3;border:1px solid rgba(61,186,126,.2)}
+.tag.star{background:rgba(245,200,122,.12);color:#f5c87a;border:1px solid rgba(245,200,122,.2)}
+.footer{text-align:center;font-size:.78rem;color:#4a6878;margin-top:36px;padding-top:18px;border-top:1px solid #1a2a38}
+.footer a{color:var(--accent);text-decoration:none}
+@media(max-width:600px){.sec-body{padding:12px 14px}th,td{padding:7px 8px}}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="index.html">📋 行程細節</a>
+  <a href="hotels.html">🏨 住宿</a>
+  <a href="transport.html"><strong style="color:#fff">🚗 交通</strong></a>
+  <a href="norway-todo.html">✅ 待辦</a>
+</div>
+
+<div class="hero">
+  <h1>🚗 挪威交通總覽</h1>
+  <p>✈ 航班 ・ 🚂 火車/遊船 ・ 🚗 自駕租車｜一頁掌握全程移動</p>
+  <p>9/18 出發 → 9/29 抵台北｜2 位成人</p>
+  <div class="note">⚠ 票價、時刻、渡輪營運出發前以 Vy／KLM／Fjord1 官方平台再次確認</div>
+</div>
+
+<div class="container">
+
+<div class="qnav">
+  <a href="#flights">✈ 航班</a>
+  <a href="#transit">🚂 火車・遊船</a>
+  <a href="#car">🚗 自駕租車</a>
+  <a href="#apps">📱 交通 App</a>
+</div>
+
+<!-- Flights -->
+<div class="sec" id="flights">
+  <div class="sec-head">✈ 航班（SkyTeam，可開同一張票）</div>
+  <div class="sec-body">
+    <div class="flight-row">
+      <div class="flight-dir">去程</div>
+      <div class="flight-info">
+        <strong>CI73：TPE 22:40（9/18）→ AMS 07:40（9/19）</strong>
+        <span class="sub">華航 A350，約 15h</span>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-dir">去程</div>
+      <div class="flight-info">
+        <strong>KL1199：AMS 10:05 → OSL 11:50</strong>
+        <span class="sub">AMS 轉機約 2h25，從容</span>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-dir ret">回程</div>
+      <div class="flight-info">
+        <strong>KL1158：AES 16:50（9/28）→ AMS 18:55</strong>
+        <span class="sub">Ålesund → Amsterdam，約 2h05</span>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div class="flight-dir ret">回程</div>
+      <div class="flight-info">
+        <strong>KL807：AMS 20:15（9/28）→ TPE 15:45（9/29）</strong>
+        <span class="sub">787-9／777-200，約 12h30</span>
+      </div>
+    </div>
+    <div class="warn-inline">⚠️ 回程 AMS 轉機僅約 1h20，同票有保障但偏緊；務必直接走轉機通道。KL807 約每週四班，確認 9/28 當天有飛。</div>
+  </div>
+</div>
+
+<!-- Public transit -->
+<div class="sec" id="transit">
+  <div class="sec-head">🚂 火車・巴士・遊船（9/19–9/22，未取車）</div>
+  <div class="sec-body">
+    <div class="leg">
+      <div class="leg-day">Day 2 ・ 9/19</div>
+      <p><strong>OSL 機場 → Oslo 市區</strong>：Flytoget 機場快線（約 20 分，NOK 220/人）或 <strong>Vy R10/RE10</strong>（NOK 124/人，省錢版）。</p>
+    </div>
+    <div class="leg">
+      <div class="leg-day">Day 3 ・ 9/20 ・ NiN①</div>
+      <p><strong>Oslo S → Myrdal</strong>：Bergen Line（約 4.5–5h，Hardangervidda 高原；<strong>坐右側窗</strong>景觀最美）。</p>
+      <p><strong>Myrdal → Flåm</strong>：Flåm Railway 下山（約 1h，Kjossfossen 瀑布停靠約 5 分）。<span class="tag tip">Vy 官網早訂便宜</span></p>
+    </div>
+    <div class="leg">
+      <div class="leg-day">Day 4 ・ 9/21 ・ NiN②</div>
+      <p><strong>Flåm → Gudvangen</strong>：Nærøyfjord 遊船（約 2h，UNESCO，最窄 250m）。</p>
+      <p><strong>Gudvangen → Voss</strong>：巴士（約 1h15，Stalheimskleiva 髮夾彎）。</p>
+      <p><strong>Voss → Bergen</strong>：火車（約 1h15，傍晚到）。可用 Norway in a Nutshell 套票。</p>
+    </div>
+    <div class="leg">
+      <div class="leg-day">Day 5 ・ 9/22</div>
+      <p><strong>Bergen 市區</strong>：步行＋<strong>Fløibanen 纜車</strong>上 Fløyen（320m）。</p>
+    </div>
+    <div class="notes" style="margin-top:12px">
+      <p><span class="tag warn">⚠ 行前確認</span> Vy 查 9/20–21 有無 <strong>buss for tog</strong>（鐵路替代巴士），時刻可能調整。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Car -->
+<div class="sec" id="car">
+  <div class="sec-head">🚗 自駕租車（9/23 Bergen 取車 → 9/28 Ålesund 還車）</div>
+  <div class="sec-body">
+    <table style="margin-bottom:14px">
+      <tr><th>日期</th><th>行程</th><th>距離/時間</th></tr>
+      <tr><td>9/23 🔑</td><td>Bergen 取車 → Odda（沿 Hardangerfjord）</td><td>約 3–3.5h</td></tr>
+      <tr><td>9/24</td><td>Odda → Trolltunga P2 停車場（05:30 出發）</td><td>約 1h</td></tr>
+      <tr><td>9/25</td><td>Odda → Loen/Stryn</td><td>約 4.5–5h</td></tr>
+      <tr><td>9/26</td><td>Loen → Hellesylt →（渡輪）→ Geiranger ＋ Dalsnibba</td><td>約 1.5–2h</td></tr>
+      <tr><td>9/27</td><td>Geiranger → Ålesund（經 Eidsdal–Linge 渡輪）</td><td>約 1.5h</td></tr>
+      <tr><td>9/28 🔚</td><td>Ålesund 市區 → 機場（AES, Vigra）還車</td><td>約 20 分</td></tr>
+    </table>
+    <div class="notes">
+      <p>📍 <strong>Bergen City 取車</strong>、<strong>Ålesund 機場(AES) 還車</strong>（跨點還車費 one-way fee，先比價）。Bergen 租車選擇多（含 EV／油電）。建議 EV ＋ 全險(零自負額) ＋ 第二駕駛。</p>
+      <p>✅ <strong>確認車上有 AutoPASS 感應器</strong>（渡輪、過路費自動扣款；EV 另享環保折扣）。</p>
+      <p>🅿️ <strong>Trolltunga P2 停車</strong> 約 NOK 350–500（含過路費）。<strong>Dalsnibba</strong> 收費約 NOK 350。</p>
+      <p><span class="tag warn">⚠ 季節性</span> <strong>Hellesylt–Geiranger 渡輪</strong>（fjord1.no）與 <strong>Dalsnibba</strong> 收費道路皆季節性，9 月底班次少，出發前查當日時刻；高山路 9 月底可能封，走 Hellesylt 渡輪線最穩。</p>
+      <p>📄 <strong>國際駕照 IDP</strong> 兩人都辦；主駕名下信用卡作租車押金。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Apps -->
+<div class="sec" id="apps">
+  <div class="sec-head">📱 交通／EV App</div>
+  <div class="sec-body notes">
+    <p><strong>Vy</strong>（火車訂票）｜<strong>Entur</strong>（全國大眾運輸整合）｜<strong>Vegvesen Trafikk</strong>（路況、封路）。</p>
+    <p><strong>充電</strong>：Fortum Charge &amp; Drive、Mer、Eviny、Tesla；<strong>ABRP</strong> 規劃 EV 路線。OTP 驗證建議在台灣先綁好付款。</p>
+    <p><strong>yr.no</strong>：天氣（Trolltunga、渡輪、高山路必查）。</p>
+  </div>
+</div>
+
+<div class="footer">
+  挪威交通總覽｜票價、時刻、渡輪營運出發前以官方平台再次確認<br>
+  <a href="index.html">📋 回行程細節</a> ・ <a href="hotels.html">🏨 住宿總覽 →</a>
+</div>
+
+</div>
+</body>
+</html>
