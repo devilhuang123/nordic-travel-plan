@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🇳🇴 挪威行程細節｜最終版</title>
+<title>🇳🇴 挪威流程總覽</title>
 <style>
 :root{--bg:#0d1b2a;--surface:#111f30;--card:#142038;--border:#1e3a50;--accent:#5bc8f5;--green:#3dba7e;--orange:#f5a742;--red:#e05555;--teal:#2fb8ac;--purple:#7c5cbf;--text:#e8edf2;--muted:#7a9ab0}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -90,57 +90,60 @@ tr:hover td{background:rgba(255,255,255,.02)}
   .day-body,.flights-body,.car-body{padding:12px 14px}
   th,td{padding:8px 10px}
 }
+.sched{width:100%;border-collapse:collapse;font-size:.9rem}
+.sched th{background:#0f2540;color:var(--accent);font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;font-size:.82rem}
+.sched td{padding:12px 12px;border-bottom:1px solid rgba(30,58,80,.55);vertical-align:top;line-height:1.6;color:#d3e1ee}
+.sched tr:nth-child(even) td{background:rgba(120,170,210,.045)}
+.sched tr:hover td{background:rgba(91,200,245,.06)}
+.sched .d{color:#fff;font-weight:700;white-space:nowrap;font-size:.92rem}
+.sched .d small{display:block;color:var(--muted);font-weight:400;font-size:.76rem;margin-top:3px}
+.sched .tx{color:#bfe3f5;white-space:nowrap;font-size:.86rem}
+.sched .ho a{color:var(--accent);text-decoration:none;font-weight:600}
+.sched .ho a:hover{text-decoration:underline}
+.sched .me{font-size:.82rem;min-width:190px}
+.sched .meal{display:block;margin:3px 0;color:#c3d3e0}
+.mp{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:5px;margin-right:6px;vertical-align:middle}
+.mp.b{background:rgba(245,167,66,.18);color:#f5b661;border:1px solid rgba(245,167,66,.3)}
+.mp.l{background:rgba(47,184,172,.18);color:#4fd0c4;border:1px solid rgba(47,184,172,.3)}
+.mp.d{background:rgba(124,92,191,.2);color:#a88fe6;border:1px solid rgba(124,92,191,.35)}
+.bk{color:#6dd8a3;font-weight:700}
+.warn-mini{color:#f5b661;font-size:.74rem}
+.flights-head{cursor:pointer;display:flex;align-items:center;gap:8px}
+.flights-head::after{content:'▸';margin-left:auto;color:var(--muted);font-size:1.1rem;transition:transform .2s}
+.flights-box.open .flights-head::after{transform:rotate(90deg)}
+.flights-body{display:none}
+.flights-box.open .flights-body{display:block}
+.flights-head .hint{font-size:.72rem;color:var(--muted);font-weight:400}
 </style>
 </head>
 <body>
 
 <div class="topnav">
-  <a href="index.html"><strong style="color:#fff">📋 行程細節</strong></a>
+  <a href="index.html"><strong style="color:#fff">📋 流程總覽</strong></a>
+  <a href="daily.html">📅 每日行程</a>
   <a href="hotels.html">🏨 住宿</a>
   <a href="transport.html">🚗 交通</a>
   <a href="norway-todo.html">✅ 待辦</a>
 </div>
 
 <div class="hero">
-  <h1>🇳🇴 挪威行程細節（最終版）</h1>
+  <h1>🇳🇴 挪威流程總覽</h1>
   <p>Oslo → Flåm → Voss → Bergen → Odda → Loen → Geiranger → Ålesund</p>
   <p>9/18 出發 → 9/29 抵台北｜挪威 9 晚｜2 位成人</p>
-  <div class="note">⚠ 票價、時刻出發前以 Vy／KLM 官方平台再次確認</div>
+  <div class="note">重點總覽：航班・交通時刻・住宿｜每日細節見 <a href="daily.html" style="color:#8fd4f5">📅 每日行程</a></div>
 </div>
 
 <div class="container">
 
-<div class="map-section" id="map">
-  <div class="map-head">
-    <h2>🗺 挪威行程地圖</h2>
-    <span>Oslo → Flåm → Voss → Bergen → Odda → Loen → Geiranger → Ålesund</span>
-  </div>
-  <div class="map-wrap">
-    <iframe src="https://www.google.com/maps/d/embed?mid=1Qdunu4atqAtdozF2Sp9Nmu-lTZPVafg&ehbc=2E312F" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</div>
-
 <div class="qnav">
-  <a href="#map">🗺 地圖</a>
   <a href="#flights">✈ 航班</a>
   <a href="#schedule">📋 總表</a>
-  <a href="#car">🚗 租車</a>
-  <a href="#d12">Day1–2 Oslo</a>
-  <a href="#d3">Day3 Flåm</a>
-  <a href="#d4">Day4 Bergen</a>
-  <a href="#d5">Day5 Bergen</a>
-  <a href="#d67">Day6–7 Odda</a>
-  <a href="#d8">Day8 Loen</a>
-  <a href="#d9">Day9 Geiranger</a>
-  <a href="#d10">Day10 Ålesund</a>
-  <a href="#d1112">Day11–12 回程</a>
-  <a href="#tips">💡 備忘</a>
-  <a href="#rain">🌧 雨天備案</a>
+  <a href="daily.html">📅 每日行程 →</a>
 </div>
 
 <!-- Flights -->
 <div class="flights-box" id="flights">
-  <div class="flights-head">✈ 航班（SkyTeam，可開同一張票）</div>
+  <div class="flights-head">✈ 航班（SkyTeam，可開同一張票）<span class="hint">點開看時刻</span></div>
   <div class="flights-body">
     <div class="flight-row">
       <div class="flight-dir">去程</div>
@@ -176,366 +179,33 @@ tr:hover td{background:rgba(255,255,255,.02)}
 
 <!-- Schedule Table -->
 <div class="table-wrap" id="schedule">
-  <table>
-    <tr><th>Day</th><th>日期</th><th>行程</th><th>交通</th><th>住宿</th></tr>
-    <tr><td>1</td><td>9/18</td><td>TPE 出發</td><td>✈ CI73 TPE 22:40→AMS（隔日 07:40）</td><td>機上</td></tr>
-    <tr><td>2</td><td>9/19</td><td>抵 AMS 轉 Oslo</td><td>✈ KL1199 AMS 10:05→OSL 11:50</td><td>Clarion Hotel The Hub（1 晚）</td></tr>
-    <tr><td>3</td><td>9/20</td><td>NiN①：Oslo→Myrdal→Flåm</td><td>🚂 08:12→14:22（Bergen Line＋Flåmsbana）✅</td><td>Heimly Pensjonat（Flåm，1 晚）</td></tr>
-    <tr><td>4</td><td>9/21</td><td>NiN②：Flåm→Nærøyfjord→Voss→Bergen</td><td>⛵09:30→11:30 🚌11:40→12:45 🚂14:07→15:24 ✅</td><td>Skostredet Hotel &amp; Spa（第 1 晚）</td></tr>
-    <tr><td>5</td><td>9/22</td><td>Bergen 整日（Bryggen、Fløibanen）</td><td>步行＋纜車</td><td>Skostredet Hotel &amp; Spa（第 2 晚）</td></tr>
-    <tr><td>6</td><td>9/23</td><td>Bergen 取車 → Odda</td><td>🚗 自駕約 3–3.5h</td><td>Trolltunga Hotel（第 1 晚）</td></tr>
-    <tr><td>7</td><td>9/24</td><td>Trolltunga 健行</td><td>🚗 自駕到 P2</td><td>Trolltunga Hotel（第 2 晚）</td></tr>
-    <tr><td>8</td><td>9/25</td><td>Odda → Loen/Stryn（Loen Skylift）</td><td>🚗 自駕約 4.5–5h</td><td>Hotel Loenfjord（Loen，1 晚）</td></tr>
-    <tr><td>9</td><td>9/26</td><td>Loen → Geiranger ＋ 遊船 ＋ Dalsnibba</td><td>🚗＋⛵ Hellesylt 渡輪約 2h</td><td>Hotel Union Geiranger（1 晚）</td></tr>
-    <tr><td>10</td><td>9/27</td><td>Geiranger → Ålesund</td><td>🚗 約 1.5h</td><td>Hotel 1904（Ålesund，1 晚）</td></tr>
-    <tr><td>11</td><td>9/28</td><td>Ålesund 上午 → 還車 → 飛</td><td>✈ KL1158 AES 16:50→AMS；KL807 AMS 20:15</td><td>機上</td></tr>
-    <tr><td>12</td><td>9/29</td><td>15:45 抵達 TPE</td><td>—</td><td>—</td></tr>
+  <table class="sched">
+    <tr><th>日期</th><th>重點</th><th>交通</th><th>住宿</th><th>餐食（早／午／晚）</th></tr>
+    <tr><td class="d">Day 1<small>9/18 五</small></td><td>TPE 出發</td><td class="tx">✈ CI73 TPE 22:40→AMS</td><td class="ho">機上</td><td class="me"><span class="meal"><span class="mp b">早</span>機上</span><span class="meal"><span class="mp l">午</span>機上</span><span class="meal"><span class="mp d">晚</span>機上</span></td></tr>
+    <tr><td class="d">Day 2<small>9/19 六</small></td><td>抵 Oslo</td><td class="tx">✈ KL1199 AMS 10:05→OSL 11:50</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Clarion+Hotel+The+Hub+Oslo" target="_blank" rel="noopener">Clarion Hotel The Hub</a>（1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>機上</span><span class="meal"><span class="mp l">午</span>Oslo（抵達後）</span><span class="meal"><span class="mp d">晚</span>Aker Brygge（Rorbua）</span></td></tr>
+    <tr><td class="d">Day 3<small>9/20 日</small></td><td>NiN① Oslo→Flåm</td><td class="tx">🚂 08:12→14:22 <span class="bk">✅</span></td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Heimly+Pensjonat+Fl%C3%A5m" target="_blank" rel="noopener">Heimly Pensjonat</a>（1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Clarion 早餐</span><span class="meal"><span class="mp l">午</span>火車上（自備）</span><span class="meal"><span class="mp d">晚</span>Flåmsbrygga·Ægir <span class="bk">✅</span></span></td></tr>
+    <tr><td class="d">Day 4<small>9/21 一</small></td><td>NiN② Flåm→Bergen</td><td class="tx">⛵09:30→11:30<br>🚌11:40→12:45<br>🚂14:07→15:24 <span class="bk">✅</span></td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener">Skostredet Hotel &amp; Spa</a>（第 1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Heimly 早餐</span><span class="meal"><span class="mp l">午</span>Voss</span><span class="meal"><span class="mp d">晚</span>Bergen（Bryggeloftet）</span></td></tr>
+    <tr><td class="d">Day 5<small>9/22 二</small></td><td>Bergen 整日</td><td class="tx">步行＋Fløibanen 纜車</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener">Skostredet Hotel &amp; Spa</a>（第 2 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Skostredet 早餐</span><span class="meal"><span class="mp l">午</span>Torget 魚市場</span><span class="meal"><span class="mp d">晚</span>Enhjørningen</span></td></tr>
+    <tr><td class="d">Day 6<small>9/23 三</small></td><td>Bergen 取車→Odda</td><td class="tx">🚗 自駕 3–3.5h</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener">Trolltunga Hotel</a>（第 1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Skostredet 早餐</span><span class="meal"><span class="mp l">午</span>途中（Hardanger）</span><span class="meal"><span class="mp d">晚</span>Odda（Langhuset）</span></td></tr>
+    <tr><td class="d">Day 7<small>9/24 四</small></td><td>Trolltunga 健行</td><td class="tx">🚗 05:30→P2 停車場</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener">Trolltunga Hotel</a>（第 2 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>早起餐盒</span><span class="meal"><span class="mp l">午</span>行動糧（山上）</span><span class="meal"><span class="mp d">晚</span>Odda（Langhuset）</span></td></tr>
+    <tr><td class="d">Day 8<small>9/25 五</small></td><td>Odda→Loen</td><td class="tx">🚗 自駕 4.5–5h</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Loenfjord+Loen" target="_blank" rel="noopener">Hotel Loenfjord</a>（1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Trolltunga 早餐</span><span class="meal"><span class="mp l">午</span>Stryn</span><span class="meal"><span class="mp d">晚</span>Hotel Loenfjord</span></td></tr>
+    <tr><td class="d">Day 9<small>9/26 六</small></td><td>Loen→Geiranger</td><td class="tx">🚗＋⛵ 渡輪 11:30→12:40 <span class="bk">✅</span></td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Union+Geiranger" target="_blank" rel="noopener">Hotel Union Geiranger</a>（1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Loenfjord 早餐</span><span class="meal"><span class="mp l">午</span>Brasserie Posten 13:00 <span class="bk">✅</span></span><span class="meal"><span class="mp d">晚</span>Geiranger（Olebuda）</span></td></tr>
+    <tr><td class="d">Day 10<small>9/27 日</small></td><td>Geiranger→Ålesund</td><td class="tx">🚗 約1.5h（Eidsdal 渡輪）</td><td class="ho"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+1904+%C3%85lesund" target="_blank" rel="noopener">Hotel 1904</a>（1 晚）</td><td class="me"><span class="meal"><span class="mp b">早</span>Union 早餐</span><span class="meal"><span class="mp l">午</span>途中／Ålesund</span><span class="meal"><span class="mp d">晚</span>Brasseriet <span class="warn-mini">⚠週日</span></span></td></tr>
+    <tr><td class="d">Day 11<small>9/28 一</small></td><td>Ålesund→還車→飛</td><td class="tx">✈ AES 16:50→AMS 18:55</td><td class="ho">機上</td><td class="me"><span class="meal"><span class="mp b">早</span>1904 早餐</span><span class="meal"><span class="mp l">午</span>Ålesund／機場</span><span class="meal"><span class="mp d">晚</span>機上</span></td></tr>
+    <tr><td class="d">Day 12<small>9/29 二</small></td><td>抵 TPE 15:45</td><td class="tx">—</td><td class="ho">—</td><td class="me"><span class="meal"><span class="mp b">早</span>機上</span><span class="meal"><span class="mp l">午</span>—</span><span class="meal"><span class="mp d">晚</span>—</span></td></tr>
   </table>
 </div>
 
-<!-- Car Section -->
-<div class="car-section" id="car">
-  <div class="car-head">🚗 租車總覽（9/23 Bergen 取車 → 9/28 Ålesund 還車）</div>
-  <div class="car-body">
-    <table class="car-table">
-      <tr><th>日期</th><th>行程</th><th>狀態</th></tr>
-      <tr><td>9/18–9/22</td><td>飛機、Oslo、Flåm、Bergen</td><td>❌ 不用（火車／巴士／遊船）</td></tr>
-      <tr><td>9/23 🔑</td><td>Bergen 取車 → Odda</td><td>🚗 取車日</td></tr>
-      <tr><td>9/24</td><td>Trolltunga（自駕到 P2）</td><td>🚗</td></tr>
-      <tr><td>9/25</td><td>Odda → Loen/Stryn</td><td>🚗</td></tr>
-      <tr><td>9/26</td><td>Loen → Geiranger（Hellesylt 渡輪）＋ Dalsnibba</td><td>🚗</td></tr>
-      <tr><td>9/27</td><td>Geiranger → Ålesund</td><td>🚗</td></tr>
-      <tr><td>9/28 🔚</td><td>Ålesund 機場（AES）還車</td><td>🚗 還車日</td></tr>
-    </table>
-    <div class="car-notes">
-      <p>📍 <strong>Bergen 取車</strong>，<strong>Ålesund 機場(AES) 還車</strong>（跨點還車費 one-way fee，先比價）。Bergen 租車選擇多（含 EV／油電）。</p>
-      <p>🚗 <strong>Avis</strong>：Bergen City（Solheimsgaten 15）9/23 上午取、Ålesund 機場(AES) 9/28 還；<strong>EV＋全險(零自負額)＋第二駕駛</strong>。取／還車都<strong>錄影拍照車況＋EV 電量</strong>；充電 App（Fortum Charge & Drive＋Mer/Eviny/Tesla）<strong>在台灣先註冊綁卡</strong>。</p>
-      <p>✅ <strong>確認車上有 AutoPASS 感應器</strong>（渡輪、過路費自動扣款；EV 另享環保折扣）。</p>
-      <p><span class="tag warn">⚠ 季節性</span> Hellesylt–Geiranger 渡輪與 Dalsnibba 收費道路皆季節性，9 月底班次少，<strong>出發前查當日時刻表</strong>（高山路 9 月底可能封，走 Hellesylt 渡輪線最穩）。</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 1-2 -->
-<div class="day-card" id="d12">
-  <div class="day-head">
-    <div class="day-num fly">Day 1–2 ✈</div>
-    <div>
-      <div class="day-title">✈ 9/18–9/19｜TPE → Oslo</div>
-      <div class="day-sub">CI73 出發 → AMS 轉機 → OSL｜Oslo 輕鬆第一天</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Clarion Hotel The Hub</strong>（1 晚，9/19–9/20）</p>
-      <p>Oslo S 中央車站正對面，機場快線下車步行 3–5 分，隔天一早搭 NiN 火車最方便。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">✈ 航班 &amp; 交通</div>
-      <p><strong>CI73</strong>：TPE 22:40（9/18）→ AMS 07:40（9/19），約 15h。</p>
-      <p><strong>KL1199</strong>：AMS 10:05 → OSL 11:50（約 1h45）。AMS 轉機約 2h25，從容。</p>
-      <p>OSL 到市區：<strong>Flytoget</strong>（20 分，NOK 220/人）或 <strong>Vy R10/RE10</strong>（NOK 124/人，省錢版）。</p>
-    </div>
-    <div class="dsec tips">
-      <div class="dsec-label">📝 行程</div>
-      <p>中午到 Oslo，坐了約 22h 飛機會累。下午輕鬆逛 <strong>Aker Brygge 碼頭</strong> 或 <strong>Vigeland 雕刻公園</strong>，Opera House 屋頂散步。晚餐後早睡調時差，明天一早要搭 Bergen Line。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳（Aker Brygge 周邊）</div>
-      <p><strong>Rorbua</strong>（傳統挪威菜）｜<strong>Louise</strong>（海鮮）｜<strong>Olivia</strong>（義式）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 3 -->
-<div class="day-card" id="d3">
-  <div class="day-head">
-    <div class="day-num">Day 3</div>
-    <div>
-      <div class="day-title">🚂 9/20｜NiN①：Oslo → Myrdal → Flåm</div>
-      <div class="day-sub">Bergen Line（4.5–5h）→ Flåm Railway（1h）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Heimly Pensjonat</strong>（Flåm，1 晚）——Aurlandsfjord 峽灣畔的老牌民宿，多數房型有峽灣景；距 Flåm 火車站與港口步行約 10–15 分。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">🚂 交通</div>
-      <p><strong>Oslo S 08:12</strong> 搭 <strong>Bergen Line</strong> → <strong>Myrdal</strong>（約 4.5h，Hardangervidda 高原景觀；<strong>坐右側窗</strong>，Bergen 方向景觀最美）。</p>
-      <p>Myrdal 轉 <strong>Flåm Railway</strong> 下山，<strong>14:22 到 Flåm</strong>（中途 Kjossfossen 瀑布停靠約 5 分）。<span class="tag tip">✅ 已訂 Vy</span></p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Ægir BrewPub</strong>（維京拼盤＋啤酒，<strong>務必訂位</strong>，11:30–24:00）</p>
-      <p><strong>Restaurant Arven</strong>（食店內）｜<strong>Flåm Local Kitchen</strong>（餐車，平價）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 4 -->
-<div class="day-card" id="d4">
-  <div class="day-head">
-    <div class="day-num">Day 4</div>
-    <div>
-      <div class="day-title">⛵ 9/21｜NiN②：Flåm → Nærøyfjord → Voss → Bergen</div>
-      <div class="day-sub">遊船＋巴士＋火車，一日完成 NiN 後半</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Skostredet Hotel &amp; Spa</strong>（2 晚，9/21–9/23）——Bergen 市中心精品飯店、附 spa；步行可達 Bryggen、魚市場、Fløibanen 纜車站。有櫃檯，方便收 PorterService 送來的行李。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">⛵🚌🚂 交通</div>
-      <p>⛵ <strong>Flåm 09:30 → Gudvangen 11:30</strong>：Nærøyfjord 遊船（UNESCO，最窄 250m，甲板看瀑布峭壁）。<span class="tag tip">✅ 已訂</span></p>
-      <p>🚌 <strong>Gudvangen 11:40 → Voss 12:45</strong>：接駁巴士（船 11:30 到、11:40 開，<strong>10 分鐘轉乘、下船直接上車</strong>；Stalheim 髮夾彎）。<span class="tag tip">✅ 已訂</span></p>
-      <p>🚂 <strong>Voss 14:07 → Bergen 15:24</strong>：Vy 火車（Voss 有約 1h20 可午餐；<strong>坐右側</strong>看峽灣）。<span class="tag tip">✅ 已訂</span></p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Bryggeloftet &amp; Stuene</strong>（Bergen 經典老店，馴鹿・比目魚・魚湯，<strong>建議訂位</strong>）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 5 -->
-<div class="day-card" id="d5">
-  <div class="day-head">
-    <div class="day-num city">Day 5</div>
-    <div>
-      <div class="day-title">🌉 9/22｜Bergen 整日</div>
-      <div class="day-sub">魚市場・Bryggen・Fløibanen 纜車・Fløyen</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec tips">
-      <div class="dsec-label">🎯 行程</div>
-      <p><strong>Torget 魚市場</strong> → <strong>Bryggen 木屋區</strong>＋Hanseatic Museum（UNESCO 世界遺產）→ <strong>Fløibanen 纜車</strong>上 Fløyen（320m，黃昏光線俯瞰全城，Bergen 必訪）。</p>
-      <p>🥾 <strong>加碼健走</strong>：上山後走 Fløyen→Brushytten 來回 4km（1.5–2h，湖景森林）；進階可縱走 Vidden Trail 到 Ulriken（13km／5–6h）。</p>
-      <p>時間多可加：KODE 美術館、Bergenhus 城堡／Rosenkrantz 塔、Troldhaugen 葛利格故居（任選一）。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Fish Me／Fjellskål</strong>（魚市場，生蠔、魚湯）</p>
-      <p><strong>Enhjørningen</strong>（Bryggen 精緻海鮮二樓，<span class="tag warn">⚠ 週日公休</span>）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 6-7 -->
-<div class="day-card" id="d67">
-  <div class="day-head">
-    <div class="day-num hike">Day 6–7 🪨</div>
-    <div>
-      <div class="day-title">🚗🪨 9/23–9/24｜Bergen 取車 → Odda &amp; Trolltunga</div>
-      <div class="day-sub">Hardangerfjord 自駕 3–3.5h → Odda（2 晚）→ Trolltunga 全日健行</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Trolltunga Hotel / Hardanger Hotel</strong>（2 晚，9/23–9/25）</p>
-      <p>選含 <strong>早起餐盒（packed breakfast）</strong>方案，9/24 清晨 05:30 出發前才有得吃。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">🚗 交通</div>
-      <p><strong>9/23</strong>：Bergen 取車 → Odda，自駕約 <strong>3–3.5h</strong>（沿 Hardangerfjord；途中可停 Steinsdalsfossen 瀑布、Hardangerbrua 大橋）。</p>
-      <p><strong>9/24 上山</strong>：05:30 出發 → 06:30 到 <strong>P2 停車場</strong>啟程。P2 停車約 NOK 350–500（含過路費）。</p>
-    </div>
-    <div class="dsec tips">
-      <div class="dsec-label">🪨 Trolltunga 健行</div>
-      <p>全程 <strong>22km、爬升 700–900m、8–10h</strong>。穿登山鞋、帶 2L 水＋行動糧＋登山杖＋防寒衣＋急救包＋<strong>頭燈</strong>（9 月底日落約 19:30，回程延誤易摸黑）。</p>
-      <p><span class="tag warn">⚠ 風速 &gt;15m/s 或雨／結冰不出發</span>，前一晚查 <strong>yr.no</strong>。</p>
-      <p>🧭 <strong>嚮導團（選配，官方推薦）</strong>：Trolltunga Active 一日團約 10h／US$185 起，07:30 Skjeggedal Base 集合，前一晚 21:00 在 Trolltunga Hotel 有說明會（trolltunga-active.com）。</p>
-      <p><span class="tag warn">⚠ 查 P2 路況</span> Tyssedal→P2(Skjeggedal) 曾有落石，訂 P2 停車前確認道路開放。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Langhuset</strong>（開到 22–23 點，份量足）｜<strong>Ferskvaren</strong>（魚湯）｜<strong>Smeltehuset</strong>（湖景）</p>
-      <p><strong>Buer Restaurant</strong>（<span class="tag warn">⚠ 僅週四–六、需訂位</span>）</p>
-      <p>行動糧：Kiwi／Rema 1000 超市前一天採買。</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 8 -->
-<div class="day-card" id="d8">
-  <div class="day-head">
-    <div class="day-num drive">Day 8 🚗</div>
-    <div>
-      <div class="day-title">🚗 9/25｜Odda → Loen/Stryn（Nordfjord）</div>
-      <div class="day-sub">自駕約 4.5–5h · Loen Skylift · Lovatnet 翡翠湖</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Hotel Loenfjord</strong>（Loen，1 晚）——峽灣畔旅館，Alexandra 的姊妹飯店，距 Loen Skylift 纜車站步行／短車程可達，附設餐廳。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">🚗 交通</div>
-      <p>Odda → Loen，自駕約 <strong>4.5–5h</strong>，沿途峽灣景觀隨意停拍。</p>
-    </div>
-    <div class="dsec tips">
-      <div class="dsec-label">🎯 行程</div>
-      <p><strong>Loen Skylift</strong> 上 Mt. Hoven（全挪威最陡纜車之一，山頂全景步道）。<span class="tag star">⭐ 全景推薦</span></p>
-      <p>或開車到 <strong>Lovatnet 翡翠湖</strong>與 <strong>Kjenndalsbreen 冰川</strong>（約 30 分）。</p>
-      <p>🥾 <strong>加碼健走</strong>：Mt. Hoven 山頂觀景環線 30 分或高原路線 2–3h；Lovatnet 湖畔平緩步道 1–2h。前一天剛走完 Trolltunga，量力而為。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Hoven Restaurant</strong>（Loen Skylift 山頂，需留意纜車末班時間）</p>
-      <p><strong>Stryn Kaffebar &amp; Vertshus</strong>（全日）｜<strong>Hotel Loenfjord</strong> 餐廳晚餐</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 9 -->
-<div class="day-card" id="d9">
-  <div class="day-head">
-    <div class="day-num drive">Day 9 🚗⛵</div>
-    <div>
-      <div class="day-title">🚗⛵ 9/26｜Loen → Geiranger</div>
-      <div class="day-sub">Hellesylt 渡輪（約 1h）· UNESCO 遊船 · Dalsnibba 1,500m</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Hotel Union Geiranger</strong>（1 晚）——無敵峽灣景觀、泳池 SPA。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">🚗⛵ 交通</div>
-      <p>Loen → Hellesylt → <strong>Hellesylt–Geiranger 渡輪</strong> → Geiranger，約 1.5–2h。</p>
-      <p><span class="tag warn">⚠ 先查渡輪時刻（季節性，9 月底班次少）</span>，建議中午前抵達 Geiranger。</p>
-    </div>
-    <div class="dsec tips">
-      <div class="dsec-label">🎯 行程</div>
-      <p><strong>Hellesylt→Geiranger 渡輪本身就是峽灣遊船</strong>——沿途看七姊妹瀑布，<strong>不必再另訂觀景船</strong>（同段水路重複）。</p>
-      <p>🥾 想健走可訂 <strong>Skageflå drop-off 接駁船</strong>：船放你在崖下碼頭，爬約 45 分到懸崖農場正面俯瞰七姊妹瀑布，山徑約 3h 回村。<span class="tag star">⭐ 強推</span>（訂船時選含 Skageflå 停靠）</p>
-      <p>自駕上 <strong>Dalsnibba（1,500m）</strong>俯瞰峽灣——它在 Geiranger <strong>南邊</strong>、走 <strong>Nibbevegen</strong> 收費道路（約 NOK 350），<strong>不是鷹路</strong>。<span class="tag star">⭐ 最佳俯瞰點</span> 先看 webcam，雲霧就改期（9/26 傍晚或 9/27 早上皆可）。</p>
-      <p>輕鬆版：村內 <strong>Fossevandring</strong> 瀑布階梯 327 階、可到瀑布後方（1.5–2h）。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><strong>Brasserie Posten</strong>（招牌魚湯，評為全程最好喝）<span class="tag star">⭐ 必吃</span></p>
-      <p><strong>Olebuda</strong>（海鮮湯）｜<strong>Westerås</strong>（半山農莊，午餐佳）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 10 -->
-<div class="day-card" id="d10">
-  <div class="day-head">
-    <div class="day-num drive">Day 10 🚗</div>
-    <div>
-      <div class="day-title">🚗 9/27｜Geiranger → Ålesund</div>
-      <div class="day-sub">自駕約 1.5h · 新藝術小鎮 · Aksla 觀景台</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec hotel">
-      <div class="dsec-label">🏨 住宿</div>
-      <p><strong>Hotel 1904</strong>（Ålesund，1 晚）——新藝術建築區中心，步行可達碼頭與 Aksla 登山口，飯店餐廳 Green Garden 評價極高。</p>
-      <p>備選：<strong>Quality Hotel Waterfront</strong>（海濱）｜<strong>Thon Hotel Ålesund</strong>（港景）</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">🚗 交通</div>
-      <p>Geiranger → Ålesund，自駕約 <strong>1.5h</strong>（經 Eidsdal–Linge 渡輪）。下午抵達，還有時間逛小鎮。</p>
-    </div>
-    <div class="dsec tips">
-      <div class="dsec-label">🎯 行程</div>
-      <p><strong>Ålesund 新藝術風(Jugendstil)市區</strong>散步。</p>
-      <p>登 <strong>Aksla 觀景台</strong>（418 階或開車，俯瞰群島與小鎮）。<span class="tag star">⭐ 強推</span></p>
-      <p>時間多：<strong>Atlanterhavsparken 海洋公園</strong>。</p>
-      <p>🥾 <strong>加碼健走</strong>：Aksla 上去後延伸繞 <strong>Byrampen</strong> 觀景點（＋30–45 分）。</p>
-      <p>🚗 早上離開 Geiranger 走 <strong>Ørnevegen 鷹路</strong>（北邊、往 Ålesund 的路），順路停 <strong>Ørnesvingen</strong> 觀景台再接 Eidsdal–Linge 渡輪。</p>
-    </div>
-    <div class="dsec food">
-      <div class="dsec-label">🍽 餐廳</div>
-      <p><span class="tag warn">⚠ 9/27 是週日</span> Fisketorget 與 Green Garden <strong>當天都公休</strong>！晚餐改 <strong>Brasseriet</strong>（Thon Hotel，港景）或 <strong>Apotekergata No.5</strong>（訂前確認週日營業）。</p>
-      <p><strong>Fisketorget Delikatesse</strong>（乾貝、海鮮湯極佳，<span class="tag warn">⚠ 週一、週日公休</span>，二–四 11:00–22:00）</p>
-      <p><strong>Green Garden</strong>（Hotel 1904 內，招牌魚湯，<span class="tag warn">⚠ 週日公休</span>）</p>
-      <p><strong>Zuuma</strong>（壽司，14:00–21:00，五六到 22:00）｜<strong>Brasseriet</strong>（Thon Hotel，港景）</p>
-    </div>
-  </div>
-</div>
-
-<!-- DAY 11-12 -->
-<div class="day-card" id="d1112">
-  <div class="day-head">
-    <div class="day-num fly">Day 11–12 ✈</div>
-    <div>
-      <div class="day-title">✈ 9/28–9/29｜Ålesund → 回程抵台</div>
-      <div class="day-sub">AES 16:50 → AMS 20:15 → TPE 15:45（9/29）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="dsec tips">
-      <div class="dsec-label">📝 9/28 行程</div>
-      <p>上午 Ålesund 自由活動（Aksla 觀景台、市區散步）。中午前往 <strong>Ålesund Airport（AES，Vigra）</strong>（市區約 20 分），<strong>還車</strong>。</p>
-    </div>
-    <div class="dsec trans">
-      <div class="dsec-label">✈ 航班</div>
-      <p><strong>KL1158</strong>：AES 16:50 → AMS 18:55（約 2h05）。</p>
-      <p><strong>KL807</strong>：AMS 20:15（9/28）→ <strong>TPE 15:45（9/29）</strong>，787-9／777-200，約 12h30。</p>
-      <div class="warn-inline">⚠ AMS 轉機約 1h20，務必直接走轉機通道、過境查驗從速。KL807 每週約 4 班（非每日），<strong>務必確認 9/28（週一）當天有飛</strong>。</div>
-    </div>
-  </div>
-</div>
-
-<!-- Tips -->
-<div class="reminders" id="tips">
-  <h3>💡 全程備忘</h3>
-  <div class="rem-item">
-    <div class="rem-icon">💰</div>
-    <div class="rem-body"><strong>省錢</strong>：餐廳主餐約 NOK 180–350（≈NT$500–1,000）。早午餐多在 Kiwi／Rema 1000 超市解決。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">🌤</div>
-    <div class="rem-body"><strong>天氣</strong>：9 月底 8–14°C、早晚溫差大、峽灣多變。Trolltunga 看天氣行事，<strong>yr.no</strong> 最準。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">📱</div>
-    <div class="rem-body"><strong>交通 App</strong>：Vy（火車）、Ruter/Entur（交通）、yr.no（天氣）、Plug &amp; Share／ABRP（充電/EV）。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">🚨</div>
-    <div class="rem-body"><strong>緊急</strong>：110 火警 / 113 救護 / 112 警察。</div>
-  </div>
-  <div class="rem-item">
-    <div class="rem-icon">📋</div>
-    <div class="rem-body"><strong>簽證</strong>：台灣護照申根免簽 90 天；留意 <strong>ETIAS</strong>（預計 €7，需提前申請，出發前查最新上線狀態）。</div>
-  </div>
-</div>
-
-<!-- 打包 + 雨天備案 -->
-<div class="reminders" id="pack" style="margin-top:22px">
-  <h3>🧳 打包重點</h3>
-  <div class="rem-item"><div class="rem-icon">🥾</div><div class="rem-body">登山鞋、防水外套、登山杖、2L 水、行動糧、急救包、<strong>頭燈</strong>（Trolltunga 摸黑保險）。</div></div>
-  <div class="rem-item"><div class="rem-icon">🔌</div><div class="rem-body">歐規轉接插頭(Type C/F)、行動電源；EV 充電 App 先在台灣註冊綁卡。</div></div>
-  <div class="rem-item"><div class="rem-icon">💳</div><div class="rem-body">信用卡為主（挪威幾乎全刷卡）；主駕名下卡作租車押金；兩人帶 IDP。</div></div>
-</div>
-
-<div class="reminders" id="rain" style="margin-top:16px;border-color:rgba(91,200,245,.3)">
-  <h3 style="color:var(--accent)">🌧 雨天備案</h3>
-  <div class="rem-item"><div class="rem-icon">🪨</div><div class="rem-body"><strong>Trolltunga(9/24)最重要</strong>：雨／強風(&gt;15m/s)／結冰不上去。改 Låtefossen、Vøringsfossen、Buerbreen 短健行、Tyssedal 水電博物館(室內)。</div></div>
-  <div class="rem-item"><div class="rem-icon">🌧</div><div class="rem-body"><strong>Bergen(9/22)</strong>：KODE 美術館、Akvariet 水族館、Bryggens Museum、Mathallen 室內魚市場。</div></div>
-  <div class="rem-item"><div class="rem-icon">🚠</div><div class="rem-body"><strong>Loen(9/25)</strong>：Skylift 起霧→Hotel Loenfjord 休息、Lovatnet 湖畔／Briksdalsbreen 冰川。</div></div>
-  <div class="rem-item"><div class="rem-icon">🏔</div><div class="rem-body"><strong>Geiranger(9/26)</strong>：Dalsnibba 看 webcam、雲霧改期；渡輪照搭、Norsk Fjordsenter(室內)、Hotel Union 泳池。</div></div>
-  <div class="rem-item"><div class="rem-icon">🏛</div><div class="rem-body"><strong>Ålesund(9/27)</strong>：Jugendstilsenteret 新藝術中心、Atlanterhavsparken 海洋公園、Sunnmøre 博物館。</div></div>
-  <div class="rem-item"><div class="rem-icon">🚂</div><div class="rem-body"><strong>NiN(9/20–21)</strong>：火車與遊船照跑，雨天瀑布更壯、峽灣起霧有氣氛。</div></div>
-</div>
-
 <div class="footer">
-  行程版本：2026 年 Norway Plan Project（最終版）｜票價、時刻出發前以官方平台再次確認<br>
-  <a href="hotels.html" style="color:var(--accent);text-decoration:none">🏨 住宿總覽</a> ・ <a href="transport.html" style="color:var(--accent);text-decoration:none">🚗 交通總覽 →</a>
+  行程版本：2026 年 Norway Plan Project｜票價、時刻出發前以官方平台再次確認<br>
+  <a href="daily.html" style="color:var(--accent);text-decoration:none">📅 每日行程</a> ・ <a href="hotels.html" style="color:var(--accent);text-decoration:none">🏨 住宿</a> ・ <a href="transport.html" style="color:var(--accent);text-decoration:none">🚗 交通 →</a>
 </div>
 
 </div>
+<script>
+document.querySelectorAll('.flights-head').forEach(function(h){h.addEventListener('click',function(){h.parentElement.classList.toggle('open');});});
+function openFlights(){if(location.hash==='#flights'){var f=document.getElementById('flights');if(f)f.classList.add('open');}}
+window.addEventListener('hashchange',openFlights);openFlights();
+</script>
 </body>
 </html>
