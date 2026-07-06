@@ -21,7 +21,6 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
   <div style="border-bottom:1px solid #edf1f4;background:#f8fafb;overflow-x:auto">
     <div style="display:flex;gap:20px;padding:14px 20px;font-size:13px;white-space:nowrap;width:max-content;margin:0 auto">
       <a href="index.html" style="color:#25313d;font-weight:700;text-decoration:none">📋 流程總覽</a>
-      <a href="daily.html" style="color:#8a97a4;text-decoration:none" class="hv1">📅 每日行程</a>
       <a href="hotels.html" style="color:#8a97a4;text-decoration:none" class="hv1">🏨 住宿</a>
       <a href="transport.html" style="color:#8a97a4;text-decoration:none" class="hv1">🚗 交通</a>
       <a href="norway-todo.html" style="color:#8a97a4;text-decoration:none" class="hv1">✅ 待辦</a>
@@ -34,16 +33,571 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
     <h1 style="font-size:clamp(26px,5vw,34px);font-weight:900;margin:12px 0 10px;line-height:1.3">🇳🇴 挪威流程總覽</h1>
     <p style="font-size:13.5px;color:#b9c8d5;margin:0 0 4px;line-height:1.9">Oslo → Flåm → Voss → Bergen → Odda → Loen → Geiranger → Ålesund</p>
     <p style="font-size:13.5px;color:#b9c8d5;margin:0;line-height:1.9">9/18 出發 → 9/29 抵台北｜挪威 9 晚｜2 位成人</p>
-    <div style="font-size:12px;color:#e8d3a3;margin-top:16px;background:rgba(255,255,255,.07);border-radius:10px;padding:9px 14px;display:inline-block">重點總覽：航班・交通時刻・住宿｜每日細節見 <a href="daily.html" style="color:#f0dfb8;font-weight:700">📅 每日行程</a></div>
+    <div style="font-size:12px;color:#e8d3a3;margin-top:16px;background:rgba(255,255,255,.07);border-radius:10px;padding:9px 14px;display:inline-block">點任一天可展開當日時間軸；航班・地圖・備忘在最下方</div>
   </div>
 
   <div style="max-width:680px;margin:0 auto;padding:24px 20px 64px">
 
     <!-- quick nav -->
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <a href="#flights" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">✈ 航班</a>
       <a href="#schedule" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">📋 總表</a>
-      <a href="daily.html" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">📅 每日行程 →</a>
+      <a href="#flights" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">✈ 航班</a>
+      <a href="#map" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">🗺 地圖</a>
+      <a href="#tips" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#61707f;font-size:12.5px;padding:5px 14px;border-radius:99px;text-decoration:none;white-space:nowrap" class="hv2">💡 備忘</a>
+    </div>
+
+    <!-- map -->
+    <div id="map" style="scroll-margin-top:20px;margin-top:8px">
+      <div onclick="tog('map')" style="display:flex;align-items:baseline;gap:12px;margin:0 0 4px;cursor:pointer;user-select:none">
+        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">🗺</span>
+        <div style="font-size:16px;font-weight:900;color:#25313d">挪威行程地圖<span style="font-weight:500;color:#8a97a4;font-size:12.5px">（全程路線）</span></div>
+        <span style="margin-left:auto;font-size:12px;color:#8a97a4"><span id="ar-map">▸</span></span>
+      </div>
+      <div style="height:1px;background:#25313d;margin-bottom:4px"></div>
+      <div id="bd-map" style="display:none">
+        <div style="position:relative;width:100%;padding-bottom:56%;height:0;overflow:hidden;border-radius:12px;margin-top:12px">
+          <iframe src="https://www.google.com/maps/d/embed?mid=1Qdunu4atqAtdozF2Sp9Nmu-lTZPVafg&amp;ehbc=2E312F" allowfullscreen="allowfullscreen" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- schedule -->
+    <div id="schedule" style="scroll-margin-top:20px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:42px 0 4px">
+        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">12</span>
+        <div style="font-size:16px;font-weight:900;color:#25313d">十二日總表</div>
+      </div>
+      <div style="height:1px;background:#25313d;margin-bottom:4px"></div>
+      <div style="margin:14px 2px 2px;font-size:13px"><a href="#" id="togAllBtn" onclick="togAll(event)" style="color:#3d6b8f;text-decoration:none;font-weight:600" class="hv3">▾ 全部展開</a></div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('01')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">01</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/18 五</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">TPE 出發</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ CI73 TPE 22:40→AMS</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>機上</span><span></span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 機上 · 晚 機上</div>
+          </div>
+            <span id="ar-01" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-01" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~19:40</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">桃園機場報到（國際線建議提前約 3h）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">22:40</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">CI73 TPE → AMS（→ 隔日 07:40 抵 AMS，約 15h，機上過夜）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('02')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">02</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/19 六</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">抵 Oslo</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ KL1199 AMS 10:05→OSL 11:50</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Clarion+Hotel+The+Hub+Oslo" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Clarion Hotel The Hub</a><span>（1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 Oslo（抵達後） · 晚 Aker Brygge（Rorbua）</div>
+          </div>
+            <span id="ar-02" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-02" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">07:40</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 AMS，過申根查驗、轉機（約 2h25）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">10:05</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">KL1199 AMS → OSL 11:50</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">11:50</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">OSL 抵達——申根內線、<strong style="color:#25313d">Oslo 免入境查驗</strong>，領行李即走。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~12:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">機場站進市區：<strong style="color:#25313d">Flytoget</strong> 19分／NOK 243 或 <strong style="color:#25313d">Vy L12</strong> 25–30分／NOK 124（<strong style="color:#25313d">免預訂</strong>、感應卡嗶）→ Oslo S。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:20</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Oslo S → 步行 3–5 分 <strong style="color:#25313d">Clarion The Hub</strong>。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">大行李先寄櫃檯（房間 15:00 才開放）→ 逛 Aker Brygge／歌劇院屋頂／Vigeland。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">15:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">check-in 拿房。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 Aker Brygge（週六熱門，建議訂位）。</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">睡前</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">分裝：Flåm 過夜小包＋大行李貼 <strong style="color:#25313d">PorterService</strong> 條交櫃檯（隔天 06:00–09:00 收、直送 Bergen）；早睡，明早 08:12 火車。</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('03')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">03</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/20 日</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">NiN① Oslo→Flåm</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚂 08:12→14:22 ✅</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Heimly+Pensjonat+Fl%C3%A5m" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Heimly Pensjonat</a><span>（1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Clarion 早餐 · 午 火車上（自備） · 晚 Flåmsbrygga·Ægir ✅</div>
+          </div>
+            <span id="ar-03" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-03" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~06:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Clarion 早餐；大行李（貼 <strong style="color:#25313d">PorterService</strong> 條）交櫃檯，06:00–09:00 收送 Bergen</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~07:45</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">退房、步行到 Oslo S</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">08:12</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Bergen Line</strong> Oslo S → Myrdal（約 4.5h，坐右側看 Hardangervidda）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Myrdal，轉 <strong style="color:#25313d">Flåmsbana</strong>（Kjossfossen 瀑布停約 5 分）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">14:22</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 <strong style="color:#25313d">Flåm</strong>，入住 Heimly（步行約 10–15 分）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~15:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Flåm 自由：峽灣散步、Flåm 鐵路博物館(免費)、逛紀念品〔候選〕</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~16:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">加碼〔候選〕：Stegastein 觀景台(觀光巴士/tour) 或 Otternes 古農莊</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 <strong style="color:#25313d">Flåmsbrygga（Ægir BrewPub）</strong> ✅ 已訂</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('04')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">04</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/21 一</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">NiN② Flåm→Bergen</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">⛵09:30→11:30・🚌11:40→12:45・🚂14:07→15:24 ✅</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Skostredet Hotel & Spa</a><span>（第 1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Heimly 早餐 · 午 Voss · 晚 Bergen（Bryggeloftet）</div>
+          </div>
+            <span id="ar-04" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-04" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~08:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Heimly 早餐、退房；到 Flåm 碼頭</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">09:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Nærøyfjord 遊船</strong> Flåm → Gudvangen（甲板看瀑布峭壁）✅</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">11:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Gudvangen（下船直接上車，10 分轉乘）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">11:40</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">巴士</strong> Gudvangen → Voss ✅</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">12:45</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Voss，午餐（約 1h20 空檔）；〔候選〕Voss Gondol 纜車快速上下</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">14:07</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Vy 火車</strong> Voss → Bergen（坐右側看峽灣）✅</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">15:24</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Bergen，入住 <strong style="color:#25313d">Skostredet</strong>（PorterService 行李已在櫃檯）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~16:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Bergen 傍晚：Bryggen 木屋區、魚市場、逛紀念品〔候選〕</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 <strong style="color:#25313d">Bryggeloftet & Stuene</strong>（建議訂位）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('05')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#2b8a80;line-height:1">05</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/22 二</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Bergen 整日</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">步行＋Fløibanen 纜車</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Skostredet Hotel & Spa</a><span>（第 2 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Skostredet 早餐 · 午 Torget 魚市場 · 晚 Enhjørningen</div>
+          </div>
+            <span id="ar-05" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-05" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Skostredet 早餐</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Torget 魚市場、Bryggen 木屋區＋Hanseatic Museum（UNESCO）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~11:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕KODE 美術館／Bergenhus 城堡／Rosenkrantz 塔／Troldhaugen 葛利格故居（任選）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">午餐 魚市場（Fish Me／Fjellskål，生蠔・魚湯）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Fløibanen 纜車</strong>上 Fløyen（320m 俯瞰全城）；〔候選〕健走 Fløyen→Brushytten 4km</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~17:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕Mathallen 室內市場、逛紀念品、咖啡下午茶</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 <strong style="color:#25313d">Enhjørningen</strong>（Bryggen 精緻海鮮，建議訂位）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('06')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">06</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/23 三</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Bergen 取車→Odda</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 自駕 3–3.5h</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Trolltunga Hotel</a><span>（第 1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Skostredet 早餐 · 午 途中（Hardanger） · 晚 Odda（Langhuset）</div>
+          </div>
+            <span id="ar-06" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-06" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~08:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Skostredet 早餐、退房</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">09:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Avis Bergen City</strong>（Solheimsgaten 15）取車；錄影拍照車況＋EV 電量、確認 AutoPASS tag</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">出發往 Odda（沿 Hardangerfjord，約 3–3.5h）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~11:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕停 Steinsdalsfossen 瀑布、Hardangerbrua 大橋</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">午餐 途中（Hardanger 小鎮）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Odda，入住 Trolltunga Hotel；Kiwi／Rema 1000 採買行動糧、確認早起餐盒</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~15:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕Odda 湖畔散步、Tyssedal 水電博物館(室內)</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~19:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 <strong style="color:#25313d">Langhuset</strong>（開到晚、份量足）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('07')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#a8742a;line-height:1">07</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/24 四</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Trolltunga 健行</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 05:30→P2 停車場</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Trolltunga Hotel</a><span>（第 2 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 早起餐盒 · 午 行動糧（山上） · 晚 Odda（Langhuset）</div>
+          </div>
+            <span id="ar-07" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-07" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">05:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">起床、吃早起餐盒</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">05:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">開車出發 → P2 停車場（Skjeggedal）；前晚已查 yr.no（風速&gt;15m/s／雨／結冰改備案）、確認 Tyssedal→P2 路況(曾落石)</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">06:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">P2 停車付費（約 NOK 330，含過路）、啟程；帶 2L 水＋行動糧＋登山杖＋<strong style="color:#25313d">頭燈</strong></div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~11:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 <strong style="color:#25313d">Trolltunga</strong> 拍照（去程約 4–5h）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">回到 P2（日落約 19:30，回程勿延誤）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~19:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 Langhuset（開到 22–23 點）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('08')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">08</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/25 五</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Odda→Loen</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 自駕 4.5–5h</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Loenfjord+Loen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel Loenfjord</a><span>（1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Trolltunga 早餐 · 午 Stryn · 晚 Hotel Loenfjord</div>
+          </div>
+            <span id="ar-08" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-08" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~08:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Trolltunga Hotel 早餐、退房</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~08:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">出發往 Loen（自駕約 4.5–5h，沿途峽灣停拍）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~12:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">午餐 途中／Stryn（Stryn Kaffebar & Vertshus）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Loen，入住 Hotel Loenfjord</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~15:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Loen Skylift</strong>上 Mt. Hoven（全景步道）；〔候選〕Lovatnet 翡翠湖／Kjenndalsbreen 冰川</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 Hoven Restaurant（山頂，留意末班纜車）或 Hotel Loenfjord 餐廳</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('09')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">09</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/26 六</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Loen→Geiranger</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗＋⛵ 渡輪 11:30→12:40 ✅</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Union+Geiranger" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel Union Geiranger</a><span>（1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Loenfjord 早餐 · 午 Brasserie Posten 13:00 ✅ · 晚 Geiranger（Olebuda）</div>
+          </div>
+            <span id="ar-09" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-09" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~08:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Loenfjord 早餐、退房</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">開車 Loen → Hellesylt（約 1.5–2h）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">11:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Hellesylt–Geiranger 汽車渡輪</strong>（甲板看七姊妹瀑布）✅</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">12:40</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Geiranger</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">13:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">午餐 <strong style="color:#25313d">Brasserie Posten</strong> ✅ 已訂</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">開車上 <strong style="color:#25313d">Dalsnibba</strong>（1,500m，Nibbevegen 收費 NOK 350，先看 webcam）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~16:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕Fossevandring 瀑布階梯、Norsk Fjordsenter(室內)</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~17:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">入住 Hotel Union Geiranger（峽灣景、泳池 SPA）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~19:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 Olebuda 或 Westerås（半山農莊，需訂位）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('10')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">10</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/27 日</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Geiranger→Ålesund</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 約1.5h（Eidsdal 渡輪）</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+1904+%C3%85lesund" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel 1904</a><span>（1 晚）</span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Union 早餐 · 午 途中／Ålesund · 晚 Brasseriet ⚠週日</div>
+          </div>
+            <span id="ar-10" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-10" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Hotel Union 早餐、退房</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">走 <strong style="color:#25313d">Ørnevegen 鷹路</strong>（北邊往 Ålesund），停 Ørnesvingen 觀景台</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~10:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">Eidsdal–Linge 汽車渡輪</strong>（在地密集班次、免訂，AutoPASS 扣款）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~12:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">抵 Ålesund，入住 Hotel 1904；午餐 途中／Ålesund</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">新藝術(Jugendstil)市區散步；登 <strong style="color:#25313d">Aksla 觀景台</strong>（418 階或開車）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~16:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">〔候選〕Atlanterhavsparken 海洋公園、逛紀念品、下午茶</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~18:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">晚餐 <strong style="color:#25313d">⚠週日</strong> Fisketorget／Green Garden 公休 → Brasseriet（Thon）或 Apotekergata No.5（確認週日營業）</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('11')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">11</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/28 一</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Ålesund→還車→飛</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ AES 16:50→AMS 18:55</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>機上</span><span></span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 1904 早餐 · 午 Ålesund／機場 · 晚 機上</div>
+          </div>
+            <span id="ar-11" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-11" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">Hotel 1904 早餐、退房</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~09:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">上午 Ålesund 自由：Aksla 觀景台、市區散步、逛紀念品〔候選〕</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~13:30</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">午餐 Ålesund／機場</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">~14:00</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65">開往 <strong style="color:#25313d">Ålesund 機場（AES/Vigra）</strong>（約 20 分）、<strong style="color:#25313d">Avis 還車</strong>（錄影拍照車況＋電量）</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">16:50</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">KL1158</strong> AES → AMS 18:55</div>
+          </div>
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">20:15</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">KL807</strong> AMS → TPE（隔日 15:45）；⚠ AMS 轉機約 1h20，走轉機通道從速</div>
+          </div>
+          </div>
+        </div>
+      
+        <div style="border-bottom:1px dashed #dde5eb">
+          <div onclick="tog('12')" style="display:flex;gap:18px;padding:18px 0;cursor:pointer;user-select:none;align-items:flex-start">
+          <div style="width:48px;flex-shrink:0;text-align:center">
+            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">12</div>
+            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/29 二</div>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">抵 TPE 15:45</div>
+            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">—</div>
+            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>—</span><span></span></div>
+            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 — · 晚 —</div>
+          </div>
+            <span id="ar-12" style="color:#c3ccd4;font-size:15px;flex-shrink:0;align-self:center">▸</span>
+          </div>
+          <div id="bd-12" style="display:none;padding:2px 0 20px 66px">
+            <div style="border-top:1px solid #eef1f4;display:flex;gap:14px;padding:8px 0;align-items:flex-start">
+            <div style="flex:0 0 92px;font-weight:700;color:#2b6a8f;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums">15:45</div>
+            <div style="flex:1;font-size:13.5px;color:#4a5866;line-height:1.65"><strong style="color:#25313d">KL807</strong> 抵 TPE，返家</div>
+          </div>
+          </div>
+        </div>
+      
     </div>
 
     <!-- flights -->
@@ -94,176 +648,63 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
       </div>
     </div>
 
-    <!-- schedule -->
-    <div id="schedule" style="scroll-margin-top:20px">
-      <div style="display:flex;align-items:baseline;gap:12px;margin:42px 0 4px">
-        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">12</span>
-        <div style="font-size:16px;font-weight:900;color:#25313d">十二日總表</div>
+    <div id="tips" style="scroll-margin-top:20px;margin-top:30px">
+      <div onclick="tog('tips')" style="display:flex;align-items:baseline;gap:12px;margin:0 0 4px;cursor:pointer;user-select:none">
+        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">💡</span>
+        <div style="font-size:16px;font-weight:900;color:#25313d">全程備忘</div>
+      <span style="margin-left:auto;font-size:13px;color:#8a97a4"><span id="ar-tips">▸</span></span>
       </div>
-      <div style="height:1px;background:#25313d;margin-bottom:4px"></div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">01</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/18 五</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">TPE 出發</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ CI73 TPE 22:40→AMS</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>機上</span><span></span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 機上 · 晚 機上</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">02</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/19 六</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">抵 Oslo</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ KL1199 AMS 10:05→OSL 11:50</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Clarion+Hotel+The+Hub+Oslo" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Clarion Hotel The Hub</a><span>（1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 Oslo（抵達後） · 晚 Aker Brygge（Rorbua）</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">03</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/20 日</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">NiN① Oslo→Flåm</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚂 08:12→14:22 ✅</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Heimly+Pensjonat+Fl%C3%A5m" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Heimly Pensjonat</a><span>（1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Clarion 早餐 · 午 火車上（自備） · 晚 Flåmsbrygga·Ægir ✅</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3d6b8f;line-height:1">04</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/21 一</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">NiN② Flåm→Bergen</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">⛵09:30→11:30・🚌11:40→12:45・🚂14:07→15:24 ✅</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Skostredet Hotel & Spa</a><span>（第 1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Heimly 早餐 · 午 Voss · 晚 Bergen（Bryggeloftet）</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#2b8a80;line-height:1">05</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/22 二</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Bergen 整日</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">步行＋Fløibanen 纜車</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Skostredet+Hotel+Spa+Bergen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Skostredet Hotel & Spa</a><span>（第 2 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Skostredet 早餐 · 午 Torget 魚市場 · 晚 Enhjørningen</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">06</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/23 三</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Bergen 取車→Odda</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 自駕 3–3.5h</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Trolltunga Hotel</a><span>（第 1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Skostredet 早餐 · 午 途中（Hardanger） · 晚 Odda（Langhuset）</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#a8742a;line-height:1">07</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/24 四</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Trolltunga 健行</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 05:30→P2 停車場</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga+Hotel+Odda" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Trolltunga Hotel</a><span>（第 2 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 早起餐盒 · 午 行動糧（山上） · 晚 Odda（Langhuset）</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">08</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/25 五</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Odda→Loen</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 自駕 4.5–5h</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Loenfjord+Loen" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel Loenfjord</a><span>（1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Trolltunga 早餐 · 午 Stryn · 晚 Hotel Loenfjord</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">09</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/26 六</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Loen→Geiranger</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗＋⛵ 渡輪 11:30→12:40 ✅</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Union+Geiranger" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel Union Geiranger</a><span>（1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Loenfjord 早餐 · 午 Brasserie Posten 13:00 ✅ · 晚 Geiranger（Olebuda）</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#3e8a5f;line-height:1">10</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/27 日</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Geiranger→Ålesund</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">🚗 約1.5h（Eidsdal 渡輪）</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <a href="https://www.google.com/maps/search/?api=1&query=Hotel+1904+%C3%85lesund" target="_blank" rel="noopener" style="color:#3d6b8f;font-weight:600;text-decoration:none" class="hv3">Hotel 1904</a><span>（1 晚）</span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 Union 早餐 · 午 途中／Ålesund · 晚 Brasseriet ⚠週日</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">11</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/28 一</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">Ålesund→還車→飛</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">✈ AES 16:50→AMS 18:55</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>機上</span><span></span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 1904 早餐 · 午 Ålesund／機場 · 晚 機上</div>
-          </div>
-        </div>
-      
-        <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #dde5eb">
-          <div style="width:48px;flex-shrink:0;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:#6b5ca8;line-height:1">12</div>
-            <div style="font-size:11px;color:#8a97a4;margin-top:5px;line-height:1.4">9/29 二</div>
-          </div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:15px;font-weight:700;color:#25313d;line-height:1.45">抵 TPE 15:45</div>
-            <div style="font-size:13px;color:#3d6b8f;margin-top:4px;line-height:1.65">—</div>
-            <div style="font-size:13px;color:#61707f;margin-top:3px">🏨 <span>—</span><span></span></div>
-            <div style="font-size:12px;color:#8a97a4;margin-top:5px;line-height:1.75">早 機上 · 午 — · 晚 —</div>
-          </div>
-        </div>
-      
+      <div style="height:1px;background:#25313d;margin-bottom:12px"></div>
+      <div id="bd-tips" style="display:none">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">💰</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">省錢</strong>：餐廳主餐約 NOK 180–350（≈NT$500–1,000）。早午餐多在 Kiwi／Rema 1000 超市解決。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🌤</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">天氣</strong>：9 月底 8–14°C、早晚溫差大、峽灣多變。Trolltunga 看天氣行事，<strong style="color:#25313d">yr.no</strong> 最準。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">📱</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">交通 App</strong>：Vy（火車）、Ruter/Entur（交通）、yr.no（天氣）、Plug &amp; Share／ABRP（充電/EV）。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🚨</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">緊急</strong>：110 火警 / 113 救護 / 112 警察。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">📋</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">簽證</strong>：台灣護照申根免簽 90 天；留意 <strong style="color:#25313d">ETIAS</strong>（預計 €7，需提前申請，出發前查最新上線狀態）。</p></div>
+      </div>
+      </div>
     </div>
 
-    <!-- footer -->
+    <div id="pack" style="scroll-margin-top:20px;margin-top:30px">
+      <div onclick="tog('pack')" style="display:flex;align-items:baseline;gap:12px;margin:0 0 4px;cursor:pointer;user-select:none">
+        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">🧳</span>
+        <div style="font-size:16px;font-weight:900;color:#25313d">打包重點</div>
+      <span style="margin-left:auto;font-size:13px;color:#8a97a4"><span id="ar-pack">▸</span></span>
+      </div>
+      <div style="height:1px;background:#25313d;margin-bottom:12px"></div>
+      <div id="bd-pack" style="display:none">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🥾</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0">登山鞋、防水外套、登山杖、2L 水、行動糧、急救包、<strong style="color:#25313d">頭燈</strong>（Trolltunga 摸黑保險）。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🔌</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0">歐規轉接插頭(Type C/F)、行動電源；EV 充電 App 先在台灣註冊綁卡。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">💳</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0">信用卡為主（挪威幾乎全刷卡）；主駕名下卡作租車押金；兩人帶 IDP。</p></div>
+      </div>
+      </div>
+    </div>
+
+    <div id="rain" style="scroll-margin-top:20px;margin-top:30px">
+      <div onclick="tog('rain')" style="display:flex;align-items:baseline;gap:12px;margin:0 0 4px;cursor:pointer;user-select:none">
+        <span style="font-size:38px;font-weight:900;color:#e4eaef;line-height:1">🌧</span>
+        <div style="font-size:16px;font-weight:900;color:#3d6b8f">雨天備案</div>
+      <span style="margin-left:auto;font-size:13px;color:#8a97a4"><span id="ar-rain">▸</span></span>
+      </div>
+      <div style="height:1px;background:#25313d;margin-bottom:12px"></div>
+      <div id="bd-rain" style="display:none">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🪨</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">Trolltunga(9/24)最重要</strong>：雨／強風(&gt;15m/s)／結冰不上去。改 Låtefossen、Vøringsfossen、Buerbreen 短健行、Tyssedal 水電博物館(室內)。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🌧</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">Bergen(9/22)</strong>：KODE 美術館、Akvariet 水族館、Bryggens Museum、Mathallen 室內魚市場。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🚠</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">Loen(9/25)</strong>：Skylift 起霧→Hotel Loenfjord 休息、Lovatnet 湖畔／Briksdalsbreen 冰川。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🏔</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">Geiranger(9/26)</strong>：Dalsnibba 看 webcam、雲霧改期；渡輪照搭、Norsk Fjordsenter(室內)、Hotel Union 泳池。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🏛</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">Ålesund(9/27)</strong>：Jugendstilsenteret 新藝術中心、Atlanterhavsparken 海洋公園、Sunnmøre 博物館。</p></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex-shrink:0;font-size:16px">🚂</span><p style="font-size:13.5px;color:#61707f;line-height:1.7;margin:0"><strong style="color:#25313d">NiN(9/20–21)</strong>：火車與遊船照跑，雨天瀑布更壯、峽灣起霧有氣氛。</p></div>
+      </div>
+      </div>
+    </div>
+
+        <!-- footer -->
     <div style="text-align:center;font-size:12px;color:#a8b3bd;margin-top:44px;padding-top:20px;border-top:1px solid #edf1f4;line-height:2">
       行程版本：2026 年 Norway Plan Project｜票價、時刻出發前以官方平台再次確認<br>
-      <a href="daily.html" style="color:#3d6b8f;text-decoration:none">📅 每日行程</a> ・ <a href="hotels.html" style="color:#3d6b8f;text-decoration:none">🏨 住宿</a> ・ <a href="transport.html" style="color:#3d6b8f;text-decoration:none">🚗 交通 →</a>
+      <a href="hotels.html" style="color:#3d6b8f;text-decoration:none">🏨 住宿</a> ・ <a href="transport.html" style="color:#3d6b8f;text-decoration:none">🚗 交通 →</a>
     </div>
 
   </div>
@@ -275,6 +716,10 @@ function tgF(){
   document.getElementById('fArrow').textContent=open?'▸':'▾';
   document.getElementById('fHint').textContent=open?'點開看時刻':'收合';
 }
+var DAYS=["01","02","03","04","05","06","07","08","09","10","11","12"];
+function tog(id){var b=document.getElementById('bd-'+id);if(!b)return;var o=b.style.display!=='none';b.style.display=o?'none':'block';var a=document.getElementById('ar-'+id);if(a)a.textContent=o?'▸':'▾';syncAll();}
+function syncAll(){var all=DAYS.every(function(d){return document.getElementById('bd-'+d).style.display!=='none';});var t=document.getElementById('togAllBtn');if(t)t.textContent=all?'▴ 全部收合':'▾ 全部展開';}
+function togAll(e){e.preventDefault();var all=DAYS.every(function(d){return document.getElementById('bd-'+d).style.display!=='none';});DAYS.forEach(function(d){var b=document.getElementById('bd-'+d);b.style.display=all?'none':'block';var a=document.getElementById('ar-'+d);if(a)a.textContent=all?'▸':'▾';});syncAll();}
 if(location.hash==='#flights')tgF();
 </script>
 </body>
