@@ -39,7 +39,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
     <div style="background:#eef2f5;border-radius:99px;height:12px;overflow:hidden">
       <div id="barFill" style="background:linear-gradient(90deg,#3e8a5f,#4fb583);height:100%;width:0%;transition:width .3s ease"></div>
     </div>
-    <div id="barLabel" style="font-size:12.5px;color:#8a97a4;text-align:center;margin-top:8px">0 / 24 完成</div>
+    <div id="barLabel" style="font-size:12.5px;color:#8a97a4;text-align:center;margin-top:8px">0 / 25 完成</div>
     <div style="text-align:center;margin-top:8px">
       <button onclick="resetAll()" style="background:#f3f6f8;border:1px solid #e2e8ed;color:#8a97a4;font-size:12px;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:inherit">重設全部</button>
     </div>
@@ -75,7 +75,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
               <span id="mk-t-car" style="color:#fff;font-size:13px;font-weight:900;line-height:1"></span>
             </div>
             <div style="flex:1">
-              <div id="lb-t-car" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">租車 Avis</div>
+              <div id="lb-t-car" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">租車 Avis ✅</div>
               
                 <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">Bergen City 取(9/23)／Ålesund Vigra 還(9/28)；EV＋全險(零自負額)＋第二駕駛；確認跨點還車費、AutoPASS、還車電量政策</div>
               
@@ -111,13 +111,25 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
               <span id="mk-t-ferry" style="color:#fff;font-size:13px;font-weight:900;line-height:1"></span>
             </div>
             <div style="flex:1">
-              <div id="lb-t-ferry" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">Hellesylt–Geiranger 渡輪（9/26）</div>
-              
-                <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">fjord1.no，早訂＋查當日時刻（季節性、班次少）</div>
-              
+              <div id="lb-t-ferry" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">Hellesylt–Geiranger 渡輪（9/26）✅</div>
+
+                <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">已訂 11:30（車＋2 人，fjord1.no）；出發前查當日時刻</div>
+
             </div>
           </div>
-        
+
+          <div onclick="tgI('t-porter')" style="display:flex;gap:14px;padding:13px 2px;border-bottom:1px dashed #dde5eb;cursor:pointer;align-items:flex-start;user-select:none">
+            <div id="bx-t-porter" style="flex-shrink:0;width:22px;height:22px;border:2px solid #c3cfd8;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px">
+              <span id="mk-t-porter" style="color:#fff;font-size:13px;font-weight:900;line-height:1"></span>
+            </div>
+            <div style="flex:1">
+              <div id="lb-t-porter" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">PorterService 行李直送（9/20 Oslo→Bergen）✅</div>
+
+                <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">已訂；⚠ 出發前把 email 行李吊牌印出來帶去；9/19 睡前交 Clarion 櫃檯（收件 05:00–07:45），Skostredet 代收保管</div>
+
+            </div>
+          </div>
+
       </div>
     
       <div style="margin-top:26px">
@@ -141,9 +153,9 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
               <span id="mk-t-resto" style="color:#fff;font-size:13px;font-weight:900;line-height:1"></span>
             </div>
             <div style="flex:1">
-              <div id="lb-t-resto" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">餐廳訂位</div>
-              
-                <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">Ægir(Flåm 9/20)、Bryggeloftet(Bergen 9/21)；注意各店公休日</div>
+              <div id="lb-t-resto" style="font-size:14px;color:#25313d;text-decoration:none;line-height:1.55">餐廳訂位（差 Enhjørningen 確認）</div>
+
+                <div style="font-size:12px;color:#8a97a4;margin-top:2px;line-height:1.6">✅ Ægir(9/20)｜✅ Bryggeloftet(9/21 18:30)｜✉ Enhjørningen(9/22 18:30 已寄信待回覆)｜✅ Hoven(9/25 18:30)｜Olebuda(9/26)不收訂位、現場｜✅ XL Diner(9/27 18:30 週日有開)</div>
               
             </div>
           </div>
@@ -367,7 +379,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
 </div>
 <script>
 var KEY='norwayTodoV1';
-var ITEMS=["t-flights", "t-car", "t-hotels", "t-nin", "t-ferry", "t-cruise", "t-resto", "t-onsite", "t-idp", "t-passport", "t-card", "t-insurance", "t-chargeapp", "t-apps", "t-hotelcharge", "t-gear", "t-plug", "t-cash", "t-busstog", "t-seasonal", "t-reconfirm", "t-weather", "t-github", "t-mymaps"];
+var ITEMS=["t-flights", "t-car", "t-hotels", "t-nin", "t-ferry", "t-porter", "t-cruise", "t-resto", "t-onsite", "t-idp", "t-passport", "t-card", "t-insurance", "t-chargeapp", "t-apps", "t-hotelcharge", "t-gear", "t-plug", "t-cash", "t-busstog", "t-seasonal", "t-reconfirm", "t-weather", "t-github", "t-mymaps"];
 function load(){
   try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s)return s;}catch(e){}
   return {'t-flights':true};
