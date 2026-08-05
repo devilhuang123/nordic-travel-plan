@@ -13,13 +13,14 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
 .hv2:hover{color:#3d6b8f !important;border-color:#3d6b8f !important}
 .hv3:hover{text-decoration:underline !important}
 </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div style="min-height:100vh;background:#fff;color:#25313d" data-screen-label="住宿">
 
   <!-- top nav -->
-  <div style="border-bottom:1px solid #edf1f4;background:#f8fafb;overflow-x:auto">
-    <div style="display:flex;gap:20px;padding:14px 20px;font-size:13px;white-space:nowrap;width:max-content;margin:0 auto">
+  <div class="topnav" style="border-bottom:1px solid #edf1f4;background:#f8fafb;overflow-x:auto">
+    <div class="topnav-inner" style="display:flex;gap:20px;padding:14px 20px;font-size:13px;white-space:nowrap;width:max-content;margin:0 auto">
       <a href="index.html" style="color:#8a97a4;text-decoration:none" class="hv1">📋 流程總覽</a>
       <a href="hotels.html" style="color:#25313d;font-weight:700;text-decoration:none">🏨 住宿</a>
       <a href="transport.html" style="color:#8a97a4;text-decoration:none" class="hv1">🚗 交通</a>
@@ -28,7 +29,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
   </div>
 
   <!-- hero -->
-  <div style="background:#25313d;color:#fff;padding:44px 24px 36px;text-align:center">
+  <div class="hero" style="background:#25313d;color:#fff;padding:44px 24px 36px;text-align:center">
     <div style="font-size:11px;letter-spacing:.26em;color:#c3b2d9;font-weight:500">HOTELS · 9 NIGHTS · 7 STAYS</div>
     <h1 style="font-size:clamp(26px,5vw,34px);font-weight:900;margin:12px 0 10px;line-height:1.3">🏨 挪威住宿總覽</h1>
     <p style="font-size:13.5px;color:#b9c8d5;margin:0 0 4px;line-height:1.9">9 晚・7 間飯店｜Oslo → Flåm → Bergen → Odda → Loen → Geiranger → Ålesund</p>
@@ -36,7 +37,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
     <div style="font-size:12px;color:#e8d3a3;margin-top:16px;background:rgba(255,255,255,.07);border-radius:10px;padding:9px 14px;display:inline-block">⚠ 房價、可訂房況出發前以各飯店／訂房平台再次確認</div>
   </div>
 
-  <div style="max-width:680px;margin:0 auto;padding:24px 20px 64px">
+  <div class="wrap wide" style="max-width:680px;margin:0 auto;padding:24px 20px 64px">
 
     <!-- summary -->
     <div style="display:flex;align-items:baseline;gap:12px;margin:14px 0 4px">
@@ -44,7 +45,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
       <div style="font-size:16px;font-weight:900;color:#25313d">九晚一覽</div>
     </div>
     <div style="height:1px;background:#25313d;margin-bottom:4px"></div>
-    
+    <div class="nights">
       <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed #dde5eb;align-items:baseline">
         <span style="width:78px;flex-shrink:0;font-size:12.5px;font-weight:700;color:#25313d;white-space:nowrap">9/19–9/20</span>
         <span style="width:70px;flex-shrink:0;font-size:12.5px;color:#8a97a4">Oslo</span>
@@ -93,7 +94,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
         <a href="https://www.google.com/maps/search/?api=1&query=Hotel+1904+%C3%85lesund" target="_blank" rel="noopener" style="flex:1;font-size:13.5px;font-weight:600;color:#3d6b8f;text-decoration:none" class="hv3">Hotel 1904</a>
         <span style="flex-shrink:0;font-size:11.5px;font-weight:700;color:#3d6b8f;background:#e8f0f6;padding:2px 10px;border-radius:99px;white-space:nowrap">1 晚</span>
       </div>
-    
+    </div>
 
     <!-- hotel cards -->
     <div style="display:flex;align-items:baseline;gap:12px;margin:42px 0 4px">
@@ -102,6 +103,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
     </div>
     <div style="height:1px;background:#25313d;margin-bottom:4px"></div>
 
+    <div class="cards">
     <!-- 1 -->
     <div style="display:flex;gap:18px;padding:20px 0;border-bottom:1px dashed #dde5eb">
       <div style="width:56px;flex-shrink:0;text-align:center">
@@ -201,6 +203,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
         <p style="font-size:13.5px;color:#61707f;line-height:1.75;margin:0">備選：<strong style="color:#25313d">Quality Hotel Waterfront</strong>（海濱）｜<strong style="color:#25313d">Thon Hotel Ålesund</strong>（港景）。</p>
       </div>
     </div>
+    </div>
 
     <!-- reminders -->
     <div style="margin-top:36px">
@@ -218,7 +221,7 @@ body{margin:0;background:#ffffff;font-family:'Noto Sans TC',sans-serif;-webkit-f
     </div>
 
     <!-- footer -->
-    <div style="text-align:center;font-size:12px;color:#a8b3bd;margin-top:44px;padding-top:20px;border-top:1px solid #edf1f4;line-height:2">
+    <div class="site-footer" style="text-align:center;font-size:12px;color:#a8b3bd;margin-top:44px;padding-top:20px;border-top:1px solid #edf1f4;line-height:2">
       挪威住宿總覽｜房價與房況出發前以官方平台再次確認<br>
       <a href="index.html" style="color:#3d6b8f;text-decoration:none">📋 回行程細節</a> ・ <a href="transport.html" style="color:#3d6b8f;text-decoration:none">🚗 交通總覽 →</a>
     </div>

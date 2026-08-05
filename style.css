@@ -1,0 +1,190 @@
+/* ==========================================================================
+   挪威行程網站 — 共用響應式樣式
+   手機（預設）＝ 原本的單欄版面；平板／電腦再逐級放大成雙欄卡片版面。
+   頁面本身大量使用 inline style，因此桌機覆寫多半需要 !important。
+   ========================================================================== */
+
+:root{
+  --ink:#25313d;
+  --muted:#8a97a4;
+  --line:#e6ecf1;
+  --accent:#3d6b8f;
+  --nav-h:49px;
+}
+
+html{scroll-behavior:smooth}
+img,iframe{max-width:100%}
+* {-webkit-tap-highlight-color:rgba(61,107,143,.12)}
+
+a:focus-visible,
+[onclick]:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+  border-radius:8px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
+
+/* --------------------------------------------------------------------------
+   置頂導覽列（手機／電腦皆固定在頂端）
+   -------------------------------------------------------------------------- */
+.topnav{
+  position:sticky;
+  top:0;
+  z-index:60;
+  background:rgba(248,250,251,.94) !important;
+  -webkit-backdrop-filter:saturate(1.5) blur(10px);
+  backdrop-filter:saturate(1.5) blur(10px);
+}
+.topnav-inner a{transition:color .15s ease}
+
+/* 錨點捲動時避開固定導覽列 */
+[style*="scroll-margin-top"]{scroll-margin-top:calc(var(--nav-h) + 16px) !important}
+
+/* --------------------------------------------------------------------------
+   小手機（≤400px）：壓縮留白，避免時間欄擠壓內文
+   -------------------------------------------------------------------------- */
+@media (max-width:400px){
+  .hero{padding:32px 18px 26px !important}
+  .wrap{padding-left:16px !important;padding-right:16px !important}
+  .wrap [style*="flex:0 0 92px"]{flex:0 0 72px !important}
+  .days [id^="bd-"]{padding-left:46px !important}
+  .quicknav{gap:6px !important}
+  .quicknav a{padding:5px 11px !important;font-size:12px !important}
+}
+
+/* --------------------------------------------------------------------------
+   平板（≥760px）
+   -------------------------------------------------------------------------- */
+@media (min-width:760px){
+  .wrap{max-width:760px !important;padding-left:28px !important;padding-right:28px !important}
+  .hero{padding:56px 28px 46px !important}
+  .hero h1{font-size:clamp(28px,4.2vw,38px) !important}
+}
+
+/* --------------------------------------------------------------------------
+   電腦（≥1024px）
+   -------------------------------------------------------------------------- */
+@media (min-width:1024px){
+
+  /* 導覽列 */
+  .topnav-inner{gap:34px !important;padding:16px 32px !important;font-size:14px !important}
+
+  /* Hero */
+  .hero{padding:74px 32px 60px !important}
+  .hero h1{font-size:clamp(32px,3.2vw,44px) !important;margin:16px 0 14px !important}
+  .hero p{font-size:15px !important;max-width:860px;margin-left:auto !important;margin-right:auto !important}
+  .hero [style*="letter-spacing"]{font-size:12px !important}
+  .hero [style*="border-radius:10px"]{font-size:13px !important;padding:11px 18px !important}
+
+  /* 版面寬度 */
+  .wrap{max-width:900px !important;padding-left:32px !important;padding-right:32px !important}
+  .wrap.wide{max-width:1140px !important}
+
+  /* 桌機字級微幅放大（原本為手機尺寸） */
+  .wrap [style*="font-size:38px"]{font-size:46px !important}
+  .wrap [style*="font-size:16px"]{font-size:18px !important}
+  .wrap [style*="font-size:15px"]{font-size:16.5px !important}
+  .wrap [style*="font-size:14px"]{font-size:15px !important}
+  .wrap [style*="font-size:13.5px"]{font-size:14.5px !important}
+  .wrap [style*="font-size:13px"]{font-size:14px !important}
+  .wrap [style*="font-size:12.5px"]{font-size:13px !important}
+  .wrap [style*="font-size:12px"]{font-size:12.5px !important}
+
+  /* 時間軸的時間欄加寬 */
+  .wrap [style*="flex:0 0 92px"]{flex:0 0 104px !important}
+
+  /* 快速跳轉膠囊 */
+  .quicknav{gap:10px !important;margin-bottom:6px}
+  .quicknav a{font-size:13px !important;padding:7px 16px !important;transition:background .15s ease,color .15s ease,border-color .15s ease}
+  .quicknav a:hover{background:#eaf1f6 !important}
+
+  /* 地圖：桌機給固定高度，避免過高 */
+  .wrap [style*="padding-bottom:56%"]{padding-bottom:0 !important;height:460px !important}
+
+  /* ---- 卡片式雙欄（每日行程／飯店） ---- */
+  .days,
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+    margin-top:16px;
+  }
+
+  /* 住宿頁「九晚一覽」列表雙欄 */
+  .nights{column-count:2;column-gap:36px}
+  .nights > div{break-inside:avoid}
+
+  /* 待辦分組用多欄流排，避免各組高度不一留下大空洞 */
+  .todo-groups{column-count:2;column-gap:28px}
+  .todo-groups > div{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:20px}
+
+  .days > div,
+  .cards > div,
+  .todo-groups > div{
+    border:1px solid var(--line) !important;
+    border-radius:16px;
+    background:#fff;
+    padding:0 20px !important;
+    margin-top:0 !important;
+    transition:box-shadow .2s ease,border-color .2s ease;
+  }
+
+  .days > div:hover,
+  .cards > div:hover{
+    border-color:#cfdae4 !important;
+    box-shadow:0 10px 26px rgba(37,49,61,.08);
+  }
+
+  /* 卡片內第一／最後一列不要貼邊 */
+  .cards > div{padding-top:4px !important;padding-bottom:4px !important}
+  .todo-groups > div{padding-top:16px !important;padding-bottom:6px !important}
+
+  /* 待辦：整列可點，滑過給回饋 */
+  .todo-groups [onclick]{border-radius:10px;padding-left:8px !important;padding-right:8px !important;transition:background .15s ease}
+  .todo-groups [onclick]:hover{background:#f6f9fb}
+  .todo-groups > div > div:last-child{border-bottom:0 !important}
+
+  /* 每日卡片：滑過整張卡有指標感 */
+  .days [onclick]{cursor:pointer}
+
+  /* 頁尾 */
+  .site-footer{font-size:13px !important;margin-top:56px !important}
+  .site-footer a{transition:color .15s ease}
+  .site-footer a:hover{color:var(--ink) !important}
+}
+
+/* --------------------------------------------------------------------------
+   大螢幕（≥1440px）：內容再寬一些，每日行程改三欄
+   -------------------------------------------------------------------------- */
+@media (min-width:1440px){
+  .wrap{max-width:960px !important}
+  .wrap.wide{max-width:1280px !important}
+  .wrap [style*="padding-bottom:56%"]{height:520px !important}
+}
+
+/* 超寬螢幕（≥1700px）：每日行程改三欄 */
+@media (min-width:1700px){
+  .wrap.wide{max-width:1560px !important}
+  .days{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .days [id^="bd-"]{padding-left:0 !important}
+  .nights,
+  .todo-groups{column-count:3}
+}
+
+/* --------------------------------------------------------------------------
+   列印
+   -------------------------------------------------------------------------- */
+@media print{
+  .topnav,.quicknav{display:none !important}
+  .hero{background:#fff !important;color:#25313d !important;padding:0 0 12px !important}
+  .hero h1,.hero p,.hero div{color:#25313d !important}
+  .wrap{max-width:none !important}
+  .days,.cards,.todo-groups{display:block !important}
+  [id^="bd-"]{display:block !important}
+}
